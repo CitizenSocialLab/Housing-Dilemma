@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %} | Registre usuaris partida{% endblock %}
+
+{% block content %}
+
+    <div class="topdiv-centered">
+
+        <div class="header_background"></div>
+
+        <!-- <img src="/static/img/drbrain2/logo_dr_brain.png" class="page_logo" > -->
+
+        <img src="/static/img/logo.png" class="header_logo"/>
+
+        <div class="boto1">
+            {% if pagina == 'registre' %}
+                <button id="botons_admin" type="button" class="bx-push bx bx-header-active" >
+                    Registro<br/>usuarios
+                </button>
+            {% else %}
+                <button id="botons_admin" type="button" onclick=" location.href='/admin/registre'" class="bx-push bx bx-header-inactive" >
+                    Registro<br/>usuarios
+                </button>
+            {% endif %}
+        </div>
+
+        <div class="boto2">
+            {% if pagina == 'partida' %}
+                <button id="botons_admin" type="button" class="bx-push bx bx-header-active" >
+                    Partida<br/>activa
+                </button>
+            {% else %}
+                <button id="botons_admin" type="button" onclick=" location.href='/admin/partida'" class="bx-push bx bx-header-inactive" >
+                    Partida<br/>activa
+                </button>
+            {% endif %}
+        </div>
+
+        <div class="boto3">
+            {% if pagina == 'stats' %}
+                <button id="botons_admin" type="button" class="bx-push bx bx-header-active" >
+                    Stats
+                </button>
+            {% else %}
+                <button id="botons_admin" type="button" onclick=" location.href='/admin/stats'" class="bx-push bx bx-header-inactive" >
+                    Stats
+                </button>
+            {% endif %}
+        </div>
+
+        <div class="boto4">
+            {% if pagina == 'users' %}
+                <button id="botons_admin" type="button" class="bx-push bx bx-header-active" >
+                    USERS
+                </button>
+            {% else %}
+                <button id="botons_admin" type="button" onclick=" location.href='/admin/users'" class="bx-push bx bx-header-inactive" >
+                    USERS
+                </button>
+            {% endif %}
+        </div>
+
+        <div class="boto5">
+            {% if pagina == 'partida_list' %}
+                <button id="botons_admin" type="button" class="bx-push bx bx-header-active" >
+                    Partidas
+                </button>
+            {% else %}
+                <button id="botons_admin" type="button" onclick=" location.href='/admin/partida_list'" class="bx-push bx bx-header-inactive" >
+                    Partidas
+                </button>
+            {% endif %}
+        </div>
+
+        {% block content_admin %}{% endblock %}
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheet %}
+    <link href="/static/css/resultats_final.css" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block content %}
+    <div class="topdiv">
+
+        <div class="user_info">
+            <span class="glyphicon glyphicon-user" style="margin-left: 20px;"></span>
+            {{ user.nickname }}
+        </div>
+
+        <div class="header_background"></div>
+        <img src="/static/img/logo.png" class="header_logo"/>
+
+        <div class="page_title">{{ text.final_joc.thanks| safe }}</div>
+
+        <div class="endowment_final" id="endowment_final"></div>
+
+        <div class="tickets" id="tickets"></div>
+        <div class="message" id="message"></div>
+        <div class="text_end" id="text_end"> {{ text.final_joc.text_end | safe }}</div>
+
+        {% if xAire %}
+        <div class="vull-jugar">
+            <form method="post" action="/{{ lang }}/game/logos">
+                <button class="bx bx-push bx-main">
+                    {{ text.final_joc.boto }}
+                </button>
+            </form>
+        </div>
+        {%  endif %}
+
+        <div class="vull-jugar">
+            <form method="post" action="/{{ lang }}/">
+                <button class="bx bx-push bx-main">
+                    {{ text.final_joc.boto }}
+                </button>
+            </form>
+        </div>
+
+        <img id="imatge_logos" src="/static/img/logos/logos-bibliolab.png"/>
+
+
+        <hr class="separador-bottom" />
+
+
+        <!--
+        <img id="imatge_logos" src="/static/img/logos/all_logos.png"/>
+        -->
+
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+
+    <script>
+
+        $(document).ready(function() {
+            //var endowment_final = '{{ text.final_joc.winnings }}'
+            //endowment_final = endowment_final.replace('{nickname}', '{{ username }}')
+            //endowment_final = endowment_final.replace('{winnings}', "<span class='bold_endowment_final'>"+'{{ endowment_final }}'+"</span>")
+            //$('#endowment_final').html(endowment_final)
+
+            if ('{{ bot }}' >= 2){
+                var tickets = '{{ text.final_joc.tickets_bots }}'
+                $('#message').html(tickets)
+            }else{
+                if ('{{ tickets }}' != 0){
+                    var tickets = '{{ text.final_joc.tickets | safe }}'
+                    tickets = tickets.replace('{tickets}', "<span class='bold_tickets'>{tickets}</span>")
+                    tickets = tickets.replace('{tickets}', '{{ tickets }}')
+                    $('#message').html(tickets)
+                }else{
+                    var tickets = '{{ text.final_joc.no_tickets | safe }}'
+                    //tickets = tickets.replace('{tickets}', "<span class='bold_tickets'>{tickets}</span>")
+                    //tickets = tickets.replace('{tickets}', '{{ tickets }}')
+                    $('#message').html(tickets)
+                }
+
+            }
+
+        });
+
+    </script>
+{% endblock %}

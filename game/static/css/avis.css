@@ -1,0 +1,91 @@
+.avis_legal {
+    position: absolute;
+    top: 110px;
+    left: 10px;
+    width: 970px;
+    height: 540px;
+    font-size: 16px;
+    text-align: justify;
+    overflow: scroll;
+    font-family: ralewaymedium;
+}
+
+.avis_legal_bold {
+    font-size: 16px;
+    font-family: ralewaybold;
+}
+
+.error_box_1 {
+    position: absolute;
+    top: 515px;
+    left: 100px;
+    width: 824px;
+    height: 35px;
+    color: #ff0000;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+}
+
+
+.checkbox1_legal {
+    position: absolute;
+    top: 475px;
+    left: 40px;
+    width: 940px;
+    text-align: left;
+}
+
+.checkbox2_legal {
+    position: absolute;
+    top: 455px;
+    left: 40px;
+    width: 940px;
+    text-align: left;
+}
+
+.checkbox3_legal {
+    position: absolute;
+    top: 540px;
+    left: 40px;
+    width: 940px;
+    text-align: left;
+}
+
+label {
+    font-size: 22px;
+}
+
+input[type=checkbox] {
+    display:none;
+}
+input[type=checkbox] + label:before {
+    font-family: FontAwesome;
+    display: inline-block;
+}
+
+input[type=checkbox] + label:before {
+    content: "\f096";
+}
+input[type=checkbox] + label:before {
+    letter-spacing: 10px;
+}
+
+input[type=checkbox]:checked + label:before {
+    content: "\f046";
+}
+input[type=checkbox]:checked + label:before {
+    letter-spacing: 10px;
+}
+
+.page_title_avis {
+    position: absolute;
+    top: 30px;
+    left: 67px;
+    width: 824px;
+    text-align: center;
+    font-size: 26px;
+    color: #FFFFFF;
+    z-index: 2;
+    font-family: oswaldbold;
+}

@@ -1,0 +1,109 @@
+{% extends "admin.html" %}
+
+
+{% block stylesheet %}
+    <link href="/static/css/admin.css" rel="stylesheet" media="screen">
+    <link href="/static/css/admin_stats.css" rel="stylesheet" media="screen">
+{% endblock %}
+
+
+{% block content_admin %}
+        <div id="stats_titol">
+            Info General
+        </div>
+
+        <div id="stats_info"></div>
+{% endblock %}
+{% block javascript %}
+
+    <script>
+            function update_list() {
+                $.ajax({
+                    url: '/es/ws/stats_partida/',
+                    success: function(data) {
+                        console.log(data)
+                        if(true) {
+
+
+
+                            mytext = '<table width="90%">' +
+                                    '<tr>'+
+                                    '<th style="font-size:22px;font-family:oswaldbold;text-align:right; width:350px; padding-right: 30px"></th>'+
+                                    '<th></th>'+
+                                    '</tr>' +
+                                    '<tr>' +
+                                    '<th style="font-size:22px;font-family:oswaldbold;text-align:right; width:350px; padding-right: 30px">'+ "Total Games" +'</th>'+
+                                    '<th style="font-size:22px;font-family:oswaldbold;text-align:left; width:200px;">'+ data.total_games +'</th>'+
+
+                                    '<th></th>'+
+                                    '</tr>' +
+                                    '<tr>' +
+                                    '<th style="font-size:18px;font-family:ralewaymedium;text-align:right; width:350px; padding-right: 30px">'+ "Goal achieved " + data.total_games_achieved +'</th>'+
+
+                                    '<th></th>'+
+                                    '</tr>' +
+                                    '<tr>' +
+                                    '<th style="font-size:22px;font-family:oswaldbold;text-align:right; width:350px; padding-right: 30px">'+ "Games per Treatment" +'</th>'+
+                                    '<th style="font-size:22px;font-family:oswaldbold;text-align:left; width:200px;">'+ '' +'</th>'+
+
+                                    '<th></th>'+
+                                    '</tr>' +
+                                    '<tr>' +
+                                    '<th style="font-size:18px;font-family:ralewaymedium;text-align:right; width:350px; padding-right: 30px">'+ "None " + data.total_games_treatment_none +'</th>'+
+                                    '</tr>' +
+                                    '<th th style="font-size:18px;font-family:ralewaymedium;text-align:right; width:350px; padding-right: 30px">'+ "Low " + data.total_games_treatment_low +'</th>'+
+                                    '</tr>' +
+                                    '<th th style="font-size:18px;font-family:ralewaymedium;text-align:right; width:350px; padding-right: 30px">'+ "High " + data.total_games_treatment_high +'</th>'+
+                                    '</tr>' +
+                                    '<th th style="font-size:18px;font-family:ralewaymedium;text-align:right; width:350px; padding-right: 30px">'+ "Both " + data.total_games_treatment_both +'</th>'+
+                                    '</tr>' +
+                                    '<th th style="font-size:18px;font-family:ralewaymedium;text-align:right; width:350px; padding-right: 30px">'+ "Emerge " + data.total_games_treatment_emerge +'</th>'+
+
+                                    '<th></th>'+
+                                    '</tr>' +
+                                    '</tr>' +
+                                    '</tr>' +
+                                    '<tr>' +
+                                    '<th style="font-size:22px;font-family:oswaldbold;text-align:right; width:350px; padding-right: 30px">'+ "Total Participants" +'</th>'+
+                                    '<th style="font-size:22px;font-family:oswaldbold;text-align:left; width:200px;">'+ data.total_participants +'</th>'+
+                                    '<th></th>'+
+                                    '</tr>' +
+
+                                    '<th></th>'+
+                                    '</tr>' +
+                                    '<tr>' +
+                                    '<th style="font-size:18px;font-family:ralewaymedium;text-align:right; width:350px; padding-right: 30px">'+ "Valid " + data.valid_participants +'</th>'+
+                                    '</tr>' +
+
+
+                                    '<tr>' +
+                                    '<th style="font-size:22px;font-family:oswaldbold;text-align:right; width:350px; padding-right: 30px">'+ "Total Tickets" +'</th>'+
+                                    '<th style="font-size:22px;font-family:oswaldbold;text-align:left; width:200px;">'+ data.tickets_laie +'</th>'+
+                                    '<th></th>'+
+                                    '</tr>' +
+
+                                    '<th></th>'+
+                                    '</tr>' +
+                                    '<tr>' +
+                                    '<th style="font-size:18px;font-family:ralewaymedium;text-align:right; width:350px; padding-right: 30px">'+ "Valid " + data.tickets_valid +'</th>'+
+                                    '</tr>' +
+
+                                    '</table>';
+
+                            $('#stats_info').html(mytext);
+                        }
+                        setTimeout(function(){update_list()}, 10000);
+                    },
+                    error: function(data) {
+                        console.log("error")
+                         setTimeout(function(){update_list()}, 10000);
+                    }
+                });
+            }
+
+            $(document).ready(function() {
+                update_list();
+            });
+        </script>
+
+{% endblock %}

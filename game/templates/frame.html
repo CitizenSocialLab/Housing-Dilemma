@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+    <link href="/static/css/pre_survey.css" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block title %}{{ text.enquesta2.titol_pagina }}{% endblock %}
+
+{% block content %}
+
+    <div class="topdiv-centered">
+
+        <div class="header_background"></div>
+        <img src="/static/img/logo.png" class="header_logo"/>
+
+        <hr class="separador-top" />
+
+        <!--
+        <div class="text_frame_title">
+            {{ text.survey_frame.title | safe }}
+        </div>
+        -->
+
+        <div class="text_frame_info">
+            {{ text.survey_frame.info | safe }}
+        </div>
+
+        <form method="post" action="/{{ lang }}/user/frame">
+
+            <div class="pregunta8">
+                {% if pr_framed1_danger %}  <div class="pregunta_titol_error" id="pregunta8">*{{ text.survey_frame.pr1 | safe }} ({{ text.common.error_opcio }})</div>{%  endif %}
+                {% if not pr_framed1_danger %}<div class="pregunta_titol">{{ text.survey_frame.pr1 | safe }}</div>{%  endif %}
+                <div class="btn-toolbar" data-toggle="buttons">
+                    <input type="hidden" name="pr_framed1" value="{{ pr_framed1 }}">
+                    <button name="pr_framed1" id="pr_framed1_0" value="r1" class="button_L bx bx-option {{ pr_framed1_0_checked }}">{{ text.survey_frame.pr1_r1 }}</button>
+                    <button name="pr_framed1" id="pr_framed1_1" value="r2" class="button_L bx bx-option {{ pr_framed1_1_checked }}">{{ text.survey_frame.pr1_r2 }}</button>
+                    <button name="pr_framed1" id="pr_framed1_2" value="r3" class="button_L bx bx-option {{ pr_framed1_2_checked }}">{{ text.survey_frame.pr1_r3 }}</button>
+               </div>
+            </div>
+
+            <div class="pregunta9">
+                {% if pr_framed2_danger %}  <div class="pregunta_titol_error" id="pregunta9">{{ text.survey_frame.pr2 | safe }} ({{ text.common.error_opcio }})</div>{%  endif %}
+                {% if not pr_framed2_danger %}<div class="pregunta_titol">{{ text.survey_frame.pr2 | safe }}</div>{%  endif %}
+                <div class="btn-toolbar" data-toggle="buttons">
+                    <input type="hidden" name="pr_framed2" value="{{ pr_framed2 }}">
+                    <button name="pr_framed2" id="pr_framed2_0" value="r1" class="button_L bx bx-option {{ pr_framed2_0_checked }}">{{ text.survey_frame.pr2_r1 }}</button>
+                    <button name="pr_framed2" id="pr_framed2_1" value="r2" class="button_L bx bx-option {{ pr_framed2_1_checked }}">{{ text.survey_frame.pr2_r2 }}</button>
+                    <button name="pr_framed2" id="pr_framed2_2" value="r3" class="button_L bx bx-option {{ pr_framed2_2_checked }}">{{ text.survey_frame.pr2_r3 }}</button>
+
+               </div>
+            </div>
+
+            <div class="pregunta10">
+                {% if pr_framed3_danger %}  <div class="pregunta_titol_error" id="pregunta10">{{ text.survey_frame.pr3 | safe }} ({{ text.common.error_opcio }})</div>{%  endif %}
+                {% if not pr_framed3_danger %}<div class="pregunta_titol">{{ text.survey_frame.pr3 | safe }}</div>{%  endif %}
+                <div class="btn-toolbar" data-toggle="buttons">
+                    <input type="hidden" name="pr_framed3" value="{{ pr_framed3 }}">
+                    <button name="pr_framed3" id="pr_framed3_0" value="r1" class="button_L bx bx-option {{ pr_framed3_0_checked }}" style="margin-left: 0px;">{{ text.survey_frame.pr3_r1 }}</button>
+                    <button name="pr_framed3" id="pr_framed3_1" value="r2" class="button_L bx bx-option {{ pr_framed3_1_checked }}">{{ text.survey_frame.pr3_r2 }}</button>
+                    <button name="pr_framed3" id="pr_framed3_2" value="r3" class="button_L bx bx-option {{ pr_framed3_2_checked }}">{{ text.survey_frame.pr3_r3 }}</button>
+               </div>
+            </div>
+
+
+            <hr class="separador-bottom" />
+
+            <div class="page_button_right">
+                <button class="bx bx-push bx-main" type="submit">{{ text.common.seguent }}</button>
+            </div>
+
+            <div class="page_button_left">
+                <button id="boto_sortir" type="button" onclick="location.href='/{{ lang }}/user/logout'" name="logout" class="bx-push bx bx-white" >
+                    {{ text.common.sortir_joc }}
+                </button>
+            </div>
+        </form>
+
+    </div> <!-- /container -->
+
+{% endblock %}
+{% block javascript %}
+
+    <script>
+        $(document).ready(function() {
+            console.log('-')
+            var message = '{{ text.survey_frame.pr1 | safe }}'
+            message = message.replace('{municipi}', ' - ')
+            $('#pregunta_framed1').html(message);
+
+        });
+    </script>
+{% endblock %}

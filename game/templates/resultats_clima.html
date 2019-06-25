@@ -1,0 +1,252 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheet %}
+    <link href="/static/css/resultats_clima.css" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block content %}
+    <div class="topdiv-centered">
+
+        <div class="page_title" id="page_title"></div>
+
+        <div class="header_background"></div>
+        <img src="/static/img/logo.png" class="header_logo"/>
+
+        <hr class="separador-top" />
+        <hr class="separador-bottom" />
+
+        <div class="page_button_right">
+            <button id="boto_enquesta" type="button" onclick="location.href='/{{ lang }}/user/final_joc'" name="logout" class="bx bx-push bx-main" >
+                {{  text.resultats.enquesta }}
+            </button>
+        </div>
+
+        <div id="text_result"></div>
+        <div id="text_title_table"> {{ text.common.title_table_results | safe }}</div>
+        <div id="table_partida_detail"></div>
+    </div>
+
+
+{% endblock %}
+
+{% block javascript %}
+
+    <script>
+        function update_status(user_id) {
+
+            $.ajax({
+                url: '/es/ws/stats_partida_detail/{{ num_partida }}/',
+                success: function (data) {
+
+                    var table2 = '<table class="table_partida_detail">';
+
+                    console.log(data)
+                    total_rounds = data.rounds_house.house_price.length
+                    total_players = data.rounds_player.id_player.length
+
+                    // Header
+
+                    table2 += '<tr>';
+                    table2 += '<th style="width:100px;"></th>';
+                    table2 += '<th style="width:100px;"></th>';
+                    table2 += '<th style="width:100px;"></th>';
+                    for (i = 1; i <= total_rounds; i++) table2 += '<th class="rounds"> R' + i + '</th>';
+
+                    //table2 += '<th style="width:100px;"> {{ text.resultats.contribution }} </th>';
+                    //table2 += '<th style="width:100px"> {{ text.resultats.savings }} </th>';
+                    //table2 += '<th style="width:100px;"> {{ text.resultats.bot }} </th>';
+                    table2 += "</tr>";
+
+                    // Market
+                    table2 += '<tr>';
+                    table2 += '<th class="labels" style="width:100px; border-left: solid 2px #197F03;"> {{ text.resultats.player }} </th>';
+                    table2 += '<th class="labels" style="width:100px;"> {{ text.resultats.nickname }} </th>';
+                    table2 += '<th class="labels" style="width:100px;"> {{ text.resultats.house_price }} </th>';
+                    for (i = 0; i < total_rounds; i++) table2 += '<th class="market">'+ data.rounds_house.house_price[i] + '</th>';
+                    table2 += '<th class="labels" style="width:100px;"> {{ text.resultats.objectiu }} </th>';
+                    table2 += '<th class="labels" style="width:100px;"> {{ text.resultats.savings }} </th>';
+                    //table2 += '<th style="width:100px;"> {{ text.resultats.contribution }} </th>';
+                    //table2 += '<th style="width:100px"> {{ text.resultats.savings }} </th>';
+                    //table2 += '<th style="width:100px;"> {{ text.resultats.bot }} </th>';
+                    table2 += "</tr>";
+
+
+                    var num_robot = Array.apply(null, Array(6)).map(Number.prototype.valueOf, 0);
+                    var total_diners_reals = 0;
+
+                    for (i = 0; i < total_players; i++) {
+
+                        var player = i + 1;
+
+
+                        if (user_id == data.user_ids[i]){
+                            table2 += '<td class=row_bold style="border-left: solid 2px #197F03;">' + player + '</td>';
+                            table2 += '<td class=row_bold>' + data.rounds_player.nicknames[i] + '</td>';
+                            table2 += '<td class="market_player row_bold">' + data.rounds_player.house_price[i] + '</td>';
+                        } else {
+                            table2 += '<td style="border-left: solid 2px #197F03;">' + player + '</td>';
+                            table2 += '<td class=>' + data.rounds_player.nicknames[i] + '</td>';
+                            table2 += '<td class="market_player">' + data.rounds_player.house_price[i] + '</td>';
+                        }
+
+
+                        for (j = 0; j < total_rounds; j++) {
+                            if (data.rounds_player.rented_round[i] <= j) {
+                                ronda_val = '-';
+                            } else {
+                                if (data.rounds_player.is_robot[i][j]) {
+                                    ronda_val = data.rounds_player.selections[i][j];
+                                } else {
+                                    ronda_val = data.rounds_player.selections[i][j] + '*';
+                                    //num_robot[i] = num_robot[i] + 1;
+                                }
+                            }
+
+                            if (data.rounds_player.rented_round[i] == j+1){
+                                if (user_id == data.user_ids[i]) {
+                                    table2 += '<td class="cell_bold row_bold">' + ronda_val + '</td>';
+                                }else{
+                                    table2 += '<td class="cell_bold">' + ronda_val + '</td>';
+                                }
+                            }else{
+                                if (user_id == data.rounds_player.id_player[i]) {
+                                    table2 += '<td class="row_bold">' + ronda_val + '</td>';
+                                }else{
+                                    table2 += '<td>' + ronda_val + '</td>';
+                                }
+                            }
+                        }
+
+                        if (user_id == data.rounds_player.id_player[i]) {
+                            if (data.rounds_player.house_price[i] != "-") {
+                                table2 += '<td class="row_bold">' + 'Si' + '</td>';
+                            }else{
+                                table2 += '<td class="row_bold">' + 'No' + '</td>';
+                            }
+                        }else{
+                            if (data.rounds_player.house_price[i] != "-") {
+                                table2 += '<td class="cell_aggregated">' + 'Si' + '</td>';
+                            }else{
+                                table2 += '<td class="cell_aggregated">' + 'No' + '</td>';
+                            }
+                        }
+
+                        if (user_id == data.rounds_player.id_player[i]) {
+                            if (data.rounds_player.house_price[i] != "-"){
+                                table2 += '<td class="row_bold" style="border-right: solid 2px #197F03;">' + data.rounds_player.rent[i][data.rounds_player.rent[i].length-1] + '</td>';
+                            }else{
+                                table2 += '<td class="row_bold" style="border-right: solid 2px #197F03;">' + '-' + '</td>';
+                            }
+                        }else{
+                            if (data.rounds_player.house_price[i] != "-") {
+                                table2 += '<td class="cell_aggregated">' + data.rounds_player.rent[i][data.rounds_player.rent[i].length-1] + '</td>';
+                            }else{
+                                table2 += '<td class="cell_aggregated">' + '-' + '</td>';
+                            }
+                        }
+
+                        table2 += "</tr>";
+                    }
+
+                    table2 += '<tr style="border-top: solid 2px #197F03;">';
+                    table2 += '<th style="width:100px;"></th>';
+                    table2 += '<th style="width:100px;"></th>';
+                    table2 += '<th style="width:100px;"></th>';
+                    for (i = 0; i < total_rounds; i++) table2 += '<th></th>';
+                    table2 += '<th style="width:100px;"></th>';
+                    table2 += '<th style="width:100px;"></th>';
+
+                    table2 += '</th>';
+
+                    $("#table_partida_detail").append(table2);
+
+
+                    // Message individual and collective
+                    var i_rented = false;
+                    var they_rented = 0;
+                    var house_price = 0;
+                    var i_endowment = 0;
+                    var they_endowment = 0;
+                    var they_endowment_average = 0;
+                    var they_price = 0;
+                    var they_price_average = 0;
+
+                    for (i = 0; i < data.rounds_house.house_renter.length; i++){
+                        if (user_id == data.rounds_house.house_renter[i]) {
+                           i_rented = true;
+                           house_price = data.rounds_house.house_price[i];
+                            for (j = 0; j < data.rounds_player.id_player.length; j++){
+                                if (user_id  == data.rounds_player.id_player[j]){
+                                    i_endowment =  data.rounds_player.rent[j][0];
+                                }
+                            }
+                        }
+                        if (data.rounds_house.house_renter[i] != null) {
+                            they_rented = they_rented + 1;
+                            for (j = 0; j < data.rounds_player.id_player.length; j++) {
+                                if (data.rounds_house.house_renter[i] == data.rounds_player.id_player[j]) {
+                                    they_endowment = they_endowment + data.rounds_player.rent[j][0];
+                                    they_price = they_price + data.rounds_player.house_price[j];
+                                }
+                            }
+                        }
+                    }
+
+                    they_endowment_average = they_endowment/they_rented;
+                    they_price_average = they_price/they_rented;
+
+                    var message = '';
+                    if (i_rented) {
+                        message = '{{ text.resultats.text_resultats_1 | safe }}';
+                        if (they_rented == 6) message = message +' '+ '{{ text.resultats.text_resultats_11 | safe }}'
+                        else if (they_rented > 1) message = message +' '+ '{{ text.resultats.text_resultats_12 | safe }}'
+                        else if (they_rented == 1) message = message +' '+ '{{ text.resultats.text_resultats_13 | safe }}'
+                    }else{
+                        message = '{{ text.resultats.text_resultats_2 | safe }}';
+                        if (they_rented > 1) message = message +' '+ '{{ text.resultats.text_resultats_22 | safe }}'
+                        else if (they_rented == 1) message = message +' '+ '{{ text.resultats.text_resultats_21 | safe }}'
+                    }
+
+                    var variance = data.rounds_house.house_price[data.rounds_house.house_price.length-1] / data.rounds_house.house_price[0]
+                    var variance_perc = 0;
+
+                    if (variance > 1.10) {
+                        message = message +' '+ '{{ text.resultats.text_resultats_31 | safe }}';
+                        variance_perc = ((variance - 1)*100).toFixed(2);
+                    }else if (variance >= 1) {
+                        message = message + ' ' + '{{ text.resultats.text_resultats_32 | safe }}';
+                        variance_perc = ((variance - 1) * 100).toFixed(2);
+                    }else if (variance >= 0.95) {
+                        message = message + ' ' + '{{ text.resultats.text_resultats_32 | safe }}';
+                        variance_perc = ((1 - variance) * 100).toFixed(2);
+                    }else if (variance < 0.95) {
+                        message = message +' '+ '{{ text.resultats.text_resultats_33 | safe }}'
+                        variance_perc = ((1 - variance) * 100).toFixed(2);
+                    }
+
+                    message = message.replace('{house_price}', house_price)
+                    message = message.replace('{rent_perc}', ((house_price/i_endowment)*100).toFixed(2))
+                    message = message.replace('{house_price_average}', (they_price_average).toFixed(2));
+                    message = message.replace('{rent_perc_average}', ((they_price_average/they_endowment_average)*100).toFixed(2));
+                    message = message.replace('{renters}', (they_rented));
+                    message = message.replace('{market_variance}', variance_perc);
+                    $('#text_result').show();
+                    $('#text_result').html(message);
+
+
+                },
+                error: function (data) {
+                    setTimeout(function () { update_status(user_id); }, 500);
+                }
+            });
+        }
+
+        $(document).ready(function() {
+            update_status({{ user.id }});
+        });
+
+
+    </script>
+{% endblock %}

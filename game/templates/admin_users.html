@@ -1,0 +1,41 @@
+{% extends "admin.html" %}
+
+
+{% block stylesheet %}
+    <link href="/static/css/admin.css" rel="stylesheet" media="screen">
+    <link href="/static/css/admin_users.css" rel="stylesheet" media="screen">
+{% endblock %}
+
+
+{% block content_admin %}
+    <div id="users_1" class="userlist">
+        <table>
+            <tr>
+                <th class="th_valor" style="width:50px">ID</th>
+                <th class="th_valor" style="width:150px">Nickname</th>
+                <th class="th_valor" style="width:150px">User Status</th>
+                <th class="th_valor" style="width:75px">Initial</th>
+                <th class="th_valor" style="width:75px">Current</th>
+                <th class="th_valor" style="width:75px">Game</th>
+                <th class="th_valor" style="width:150px">Game Status</th>
+                <th class="th_valor" style="width:75px">Goal</th>
+                <th class="th_valor" style="width:75px">Total</th>
+            </tr>
+
+        {% for user in users %}
+            <tr>
+              <td class="td_valor" style="font-family: ralewaybold;">{{ user.id }}</td>
+              <td class="td_valor">{{ user.nickname }}</td>
+              <td class="td_valor" style="font-family: ralewaybold;">{{ user.user_status }}</td>
+              <td class="td_valor">{{ user.endowment_initial }}</td>
+              <td class="td_valor">{{ user.endowment_current }}</td>
+              <td class="td_valor" style="font-family: ralewaybold;">{{ user.partida }}</td>
+              <td class="td_valor">{{ user.partida_status }}</td>
+              <td class="td_valor">{{ user.goal }}</td>
+              <td class="td_valor">{{ user.contributed }}</td>
+
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+{% endblock %}

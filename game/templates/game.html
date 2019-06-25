@@ -1,0 +1,345 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+    <link href="/static/css/game.css" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block title %} | Joc{% endblock %}
+
+{% block content %}
+
+    <!---------------------------------------------------------------------------------->
+    <!---------------------------------------------------------------------------------->
+    <!-------------------------          MODAL INICIAL       --------------------------->
+    <!---------------------------------------------------------------------------------->
+    <!---------------------------------------------------------------------------------->
+    <div id="welcome-modal" class="modal fade">
+        <div class="modal-dialog modal-welcome">
+            <div class="modal-content modal-content-welcome">
+                <!-- dialog body -->
+                <div class="modal-body modal-welcome-body">
+                    <div style="position:relative">
+                        <div id="presentacio_partida">{{ text.game.esperando_participante | safe }}</div>
+                        <i id="presentacio_waiting"class="fa fa-spinner fa-spin fa-5x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!---------------------------------------------------------------------------------->
+    <!---------------------------------------------------------------------------------->
+    <!-------------------------          MODAL ESPERA RONDA       ---------------------->
+    <!---------------------------------------------------------------------------------->
+    <!---------------------------------------------------------------------------------->
+    <div id="esperar-modal" class="modal fade">
+        <div class="modal-dialog modal-welcome">
+            <div class="modal-content modal-content-welcome">
+                <!-- dialog body -->
+                <div class="modal-body modal-welcome-body">
+                    <div style="position:relative">
+                        <div id="presentacio_partida">{{ text.game.esperando_ronda | safe }}</div>
+                        <i id="presentacio_waiting"class="fa fa-spinner fa-spin fa-5x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!---------------------------------------------------------------------------------->
+    <!---------------------------------------------------------------------------------->
+    <!-------------------------         MODAL COUNTDOWN      --------------------------->
+    <!---------------------------------------------------------------------------------->
+    <!---------------------------------------------------------------------------------->
+    <div id="countdown-modal" class="modal fade">
+        <div class="modal-dialog modal-countdown">
+            <div class="modal-content modal-content-countdown">
+                <!-- dialog body -->
+                <div class="modal-body modal-countdown-body">
+                    <div style="position:relative">
+
+                        <div id="countdown_text_player"></div>
+                        <div id="countdown_text_house"></div>
+                        <div id="countdown_text_limit"></div>
+                        <div id="countdown_text_reward"></div>
+
+                    </div>
+                </div>
+                <div class="modal-footer modal-countdown-footer">
+                    <div style="position:relative">
+                        <div id="countdown_titol" hidden>{{ text.game.empezamos_en }}</div>
+                        <div id="countdown_time" hidden></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!---------------------------------------------------------------------------------->
+    <!---------------------------------------------------------------------------------->
+    <!-------------------------          MODAL RONDA       --------------------------->
+    <!---------------------------------------------------------------------------------->
+    <!---------------------------------------------------------------------------------->
+    <div id="ronda-modal" class="modal fade">
+        <div class="modal-dialog modal-ronda">
+            <div class="modal-content modal-content-ronda">
+                <div class="modal-body modal-ronda-body">
+                    <div id="ronda_taula_resultats">
+                        {#<img id="modal_ronda_img" src="/static/img/drbrain_pensatiu.png"/>#}
+
+                        <!--
+                        <div id="modal_ronda_msg"></div>
+                        -->
+
+                        <!-- Player -->
+                        <div id="rectangle-player1" class="rectangle-player" style="visibility: hidden"></div>
+                        <div id="text-player-number1" class="text_player">Player</div>
+                        <img id="icon-player1" class="image_player" src="/static/img/icons/player.png">
+                        <div id="text-player1">
+                            <span class="text_time">Time</span>
+                            <span class="text_price">Price</span>
+                        </div>
+
+                        <div id="rectangle-player2" class="rectangle-player" style="visibility: hidden"></div>
+                        <div id="text-player-number2" class="text_player">Player</div>
+                        <img id="icon-player2" class="image_player" src="/static/img/icons/player.png">
+                        <div id="text-player2">
+                            <span class="text_time">Time</span>
+                            <span class="text_price">Price</span>
+                        </div>
+
+                        <div id="rectangle-player3" class="rectangle-player" style="visibility: hidden"></div>
+                        <div id="text-player-number3" class="text_player">Player</div>
+                        <img id="icon-player3" class="image_player" src="/static/img/icons/player.png">
+                        <div id="text-player3">
+                            <span class="text_time">Time</span>
+                            <span class="text_price">Price</span>
+                        </div>
+
+                        <div id="rectangle-player4" class="rectangle-player" style="visibility: hidden"></div>
+                        <div id="text-player-number4" class="text_player">Player</div>
+                        <img id="icon-player4" class="image_player" src="/static/img/icons/player.png">
+                        <div id="text-player4">
+                            <span class="text_time">Time</span>
+                            <span class="text_price">Price</span>
+                        </div>
+
+                        <div id="rectangle-player5" class="rectangle-player" style="visibility: hidden"></div>
+                        <div id="text-player-number5" class="text_player">Player</div>
+                        <img id="icon-player5" class="image_player" src="/static/img/icons/player.png">
+                        <div id="text-player5">
+                            <span class="text_time">Time</span>
+                            <span class="text_price">Price</span>
+                        </div>
+
+                        <div id="rectangle-player6" class="rectangle-player" style="visibility: hidden"></div>
+                        <div id="text-player-number6" class="text_player">Player</div>
+                        <img id="icon-player6" class="image_player" src="/static/img/icons/player.png">
+                        <div id="text-player6">
+                            <span class="text_time">Time</span>
+                            <span class="text_price">Price</span>
+                        </div>
+
+                        <!-- Houses -->
+
+                        <img id="icon-house1" class="image_house" style="opacity: 0.5" src="/static/img/icons/house.png">
+                        <div id="text-house1">
+                            <span class="text_round">-</span><br>
+                            <span class="text_price"></span>
+                        </div>
+
+                        <img id="icon-house2" class="image_house" style="opacity: 0.5" src="/static/img/icons/house.png">
+                        <div id="text-house2">
+                            <span class="text_round">-</span><br>
+                            <span class="text_price"></span>
+                        </div>
+                        <img id="icon-house3" class="image_house" style="opacity: 0.5" src="/static/img/icons/house.png">
+                        <div id="text-house3">
+                            <span class="text_round">-</span><br>
+                            <span class="text_price"></span>
+                        </div>
+
+                        <img id="icon-house4" class="image_house" style="opacity: 0.5" src="/static/img/icons/house.png">
+                        <div id="text-house4">
+                            <span class="text_round">-</span><br>
+                            <span class="text_price"></span>
+                        </div>
+                        <img id="icon-house5" class="image_house" style="opacity: 0.5" src="/static/img/icons/house.png">
+                        <div id="text-house5">
+                            <span class="text_round">-</span><br>
+                            <span class="text_price"></span>
+                        </div>
+
+                        <img id="icon-house6" class="image_house" style="opacity: 0.5" src="/static/img/icons/house.png">
+                        <div id="text-house6">
+                            <span class="text_round">-</span><br>
+                            <span class="text_price"></span>
+                        </div>
+
+                        <div id="message_rent">Message Rent</div>
+                        <div id="message_market">Message Market</div>
+
+                        <img id="icon-house-revalue" class="image_big_house" src="/static/img/icons/house.png">
+
+                        <img id="icon-up" class="image_up" src="/static/img/icons/up.png">
+                        <img id="icon-down" class="image_down" src="/static/img/icons/down.png">
+                        <img id="icon-equal" class="image_equal" src="/static/img/icons/equal.png">
+
+                        <div id="text-house-revalue"></div>
+
+                        <div id="message_no_rent_status" hidden></div>
+
+
+                        <!--
+                        <div id="resultat_objectiu"></div>
+                        <div id="text_objectiu">{{ text.game.resultats_objectiu }}</div>
+
+                        <div id="resultat_contribucio"></div>
+                        <div id="text_contribucio">{{ text.game.resultats_total_pot|safe }}</div>
+
+                        <div id="text_nota">{{ text.game.text_nota|safe }}</div>
+                        -->
+
+                    </div>
+                </div>
+
+                <div class="modal-footer modal-ronda-footer">
+                    <div style="position:relative">
+                        <div id="nextround_titol">{{ text.game.siguiente_juego }}</div>
+                        <div id="nextround_time"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!---------------------------------------------------------------------------------->
+    <!---------------------------------------------------------------------------------->
+    <!----------------------          MODAL FINAL PARTIDA       ------------------------>
+    <!---------------------------------------------------------------------------------->
+    <!---------------------------------------------------------------------------------->
+    <div id="final-modal" class="modal fade">
+        <div class="modal-dialog modal-final">
+            <div class="modal-content modal-content-final">
+                <!-- dialog body -->
+                <div class="modal-body modal-final-body">
+                    <div style="position:relative">
+
+                        <div id="fi_partida">{{ text.game.titol_final }}</div>
+                        <div id="fi_partida_text">{{ text.game.text_final | safe }}</div>
+                    </div>
+                </div>
+                <!-- dialog buttons -->
+                <div class="modal-footer modal-final-footer">
+                    <button id="final-modal-fi" type="button" class="bx bx-push bx-white">
+                        {{ text.game.sortir }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!---------------------------------------------------------------------------------->
+    <!---------------------------------------------------------------------------------->
+    <!----------------------          CAPÇALERA DEL JOC         ------------------------>
+    <!---------------------------------------------------------------------------------->
+    <!---------------------------------------------------------------------------------->
+    <div class="topdiv">
+
+        <!-- Header -->
+        <div class="header_background"></div>
+        <hr class="separador-top" />
+
+        <!-- Logo -->
+        <img src="/static/img/logo.png" class="header_logo"/>
+
+        <!-- Time -->
+        <div id="timer_title">{{ text.game.temps }}</div>
+        <div id="timer-wrap">
+            <div id="timer_background"></div>
+            <div id="timer_progress"></div>
+        </div>
+
+        <!-- User Info -->
+        <div class="user_info"><span class="glyphicon glyphicon-user" style="margin-left: 20px;"></span>{{ user.nickname }}</div>
+
+        <!-- Texts -->
+        <div id="text-ronda"></div>
+        <div id="text-bucket"></div>
+        <div id="text-contribucio"></div>
+        <div id="text-info-extra"></div>
+
+        <!-- Buttons -->
+        <button id="button-0" class="bx bx-push boto_seleccio_joc">{{ text.game.no }}</button>
+        <button id="button-1" class="bx bx-push boto_seleccio_joc">{{ text.game.yes }}</button>
+
+        <!-- Waiting -->
+        <div id="waiting_main" class="waiting_main" hidden><i class="fa fa-spinner fa-spin fa-5x"></i></div>
+        <div id="waiting_text" class="waiting_text" hidden>{{ text.common.waiting_main | safe }}</div>
+
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+    <script src="/static/js/timer.js"></script>
+    <script src="/static/js/game.js"></script>
+
+    <script>
+        // start game (countdown)
+        var countdown_text_player = "{{ text.game.countdown_text_player |safe }}";
+        var countdown_text_house = "{{ text.game.countdown_text_house |safe }}";
+        var countdown_text_limit = "{{ text.game.countdown_text_limit |safe }}";
+        var countdown_text_high_limit = "{{ text.game.countdown_text_high_limit |safe }}";
+        var countdown_text_low_limit = "{{ text.game.countdown_text_low_limit |safe }}";
+        var countdown_text_reward = "{{ text.game.countdown_text_reward |safe }}";
+
+        // start round
+        var text_player = "{{ text.common.player | safe }}"
+        var text_bucket = "{{ text.game.et_queden |safe }}";
+        var text_contribution = "{{ text.game.que_esculls |safe }}";
+        var text_round = "{{ text.game.round | safe }}";
+        var text_info_low_limit = "{{ text.game.info_low_limit | safe }}";
+
+        //
+
+        var text_total_pot = "{{ text.game.resultats_total_pot |safe }}";
+        var text_objetivo = "{{ text.game.resultats_objectiu |safe }}";
+        var text_contribucio_user = "{{ text.game.contribucio_user |safe }}";
+        var text_contribucio_dummy = "{{ text.game.resultats_contribucio_dummy |safe }}";
+        var text_num_ronda = "{{ text.game.resultats_ronda |safe }}";
+        var text_know = "{{ text.common.know |safe }}";
+        var text_quality = "{{ text.common.quality |safe }}";
+        var text_month = "{{ text.common.month |safe }}";
+
+        // messages modal end round
+        var message_no_rent = "{{ text.game.message_no_rent | safe }}";
+        var message_rent_single = "{{ text.game.message_rent_single |safe }}";
+        var message_rent_single_personal = "{{ text.game.message_rent_single_personal |safe }}";
+        var message_rent_multiple =  "{{ text.game.message_rent_multiple |safe }}";
+        var message_rent_multiple_personal = "{{ text.game.message_rent_multiple_personal |safe }}";
+
+        var message_market_increment = "{{ text.game.message_market_increment |safe }}";
+        var message_market_decrement = "{{ text.game.message_market_decrement |safe }}";
+        var message_market_high_limit = "{{ text.game.message_market_high_limit |safe }}";
+        var message_market_low_limit = "{{ text.game.message_market_low_limit |safe }}";
+
+        var text_rent = "{{ text.game.rent |safe }}";
+        var text_no_rent = "{{ text.game.no_rent |safe }}";
+
+        var message_no_rent_status = "{{ text.game.message_no_rent_status | safe }}";
+
+        game.load_game('{{ user.id }}', '{{ lang }}');
+    </script>
+{% endblock %}

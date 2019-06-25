@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+    <link href="/static/css/pre_survey.css" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block title %}{{ text.survey_sociodemo.titol_pagina }}{% endblock %}
+
+{% block content %}
+    <div class="topdiv-centered">
+
+        <div class="user_info"><span class="glyphicon glyphicon-user" style="margin-left: 20px;"></span> {{ user.nickname }}</div>
+
+        <!--<div class="header_title">{{ text.survey_sociodemo.titol }}</div>-->
+        <div class="header_background"></div>
+        <img src="/static/img/logo.png" class="header_logo"/>
+
+        <hr class="separador-top" />
+
+        <form method="post" action="/{{ lang }}/user/survey2">
+
+            <!-- You browser is using <Enter> for the first button where type = "submit" in the form. -->
+
+            <hr class="separador-bottom" />
+            <div class="page_button_right">
+                <button class="bx bx-push bx-main" type="submit">{{ text.common.seguent }}</button>
+            </div>
+            <div class="page_button_left">
+                <button id="boto_sortir" type="button" onclick="location.href='/{{ lang }}/user/logout'" name="logout" class="bx-push bx bx-white" >
+                    {{ text.common.sortir_joc }}
+                </button>
+            </div>
+
+            <!-- Questions -->
+
+            <div class="pregunta5">
+                {% if pr5_danger %}  <div class="pregunta_titol_error" id="pregunta5">*{{ text.survey_sociodemo.pr5 }} ({{ text.common.error_opcio }})</div>{%  endif %}
+                {% if not pr5_danger %}<div class="pregunta_titol">{{ text.survey_sociodemo.pr5 }}</div>{%  endif %}
+                <div class="btn-toolbar" data-toggle="buttons">
+                    <input type="hidden" name="pr5" value="{{ pr5 }}">
+                    <button name="pr5" id="pr5_r1" value="r1" class="button_Mw bx bx-option {{ pr5_r1_checked }}">{{ text.survey_sociodemo.pr5_r1 | safe }}</button>
+                    <button name="pr5" id="pr5_r2" value="r2" class="button_Mw bx bx-option {{ pr5_r2_checked }}">{{ text.survey_sociodemo.pr5_r2 | safe }}</button>
+                    <button name="pr5" id="pr5_r3" value="r3" class="button_Mw bx bx-option {{ pr5_r3_checked }}">{{ text.survey_sociodemo.pr5_r3 | safe }}</button>
+                    <button name="pr5" id="pr5_r4" value="r4" class="button_Mw bx bx-option {{ pr5_r4_checked }}">{{ text.survey_sociodemo.pr5_r4 | safe }}</button>
+                </div>
+            </div>
+
+            <div class="pregunta6">
+                {% if pr6_danger %}  <div class="pregunta_titol_error" id="pregunta6">*{{ text.survey_sociodemo.pr6 }} ({{ text.common.error_opcio }})</div>{%  endif %}
+                {% if not pr6_danger %}<div class="pregunta_titol">{{ text.survey_sociodemo.pr6 }}</div>{%  endif %}
+                <div class="btn-toolbar" data-toggle="buttons">
+                    <input type="hidden" name="pr6" value="{{ pr6 }}">
+                    <button name="pr6" id="pr6_r1" value="r1" class="button_Mw bx bx-option {{ pr6_r1_checked }}">{{ text.survey_sociodemo.pr6_r1 | safe }}</button>
+                    <button name="pr6" id="pr6_r2" value="r2" class="button_Mw bx bx-option {{ pr6_r2_checked }}">{{ text.survey_sociodemo.pr6_r2 | safe }}</button>
+                    <button name="pr6" id="pr6_r3" value="r3" class="button_Mw bx bx-option {{ pr6_r3_checked }}">{{ text.survey_sociodemo.pr6_r3 | safe }}</button>
+                    <button name="pr6" id="pr6_r4" value="r4" class="button_Mw bx bx-option {{ pr6_r4_checked }}">{{ text.survey_sociodemo.pr6_r4 | safe }}</button>
+                    <br />
+                    <button name="pr6" id="pr6_r5" value="r5" class="button_Mw bx bx-option {{ pr6_r5_checked }}" style="margin-top: 10px;">{{ text.survey_sociodemo.pr6_r5 | safe }}</button>
+                    <button name="pr6" id="pr6_r6" value="r6" class="button_Mw bx bx-option {{ pr6_r6_checked }}" style="margin-top: 10px;">{{ text.survey_sociodemo.pr6_r6 | safe }}</button>
+                    <button name="pr6" id="pr6_r7" value="r7" class="button_Mw bx bx-option {{ pr6_r7_checked }}" style="margin-top: 10px;">{{ text.survey_sociodemo.pr6_r7 | safe }}</button>
+                    <button name="pr6" id="pr6_r8" value="r8" class="button_Mw bx bx-option {{ pr6_r8_checked }}" style="margin-top: 10px;">{{ text.survey_sociodemo.pr6_r8 | safe }}</button>
+                </div>
+            </div>
+
+            <div class="pregunta7">
+                {% if pr7_danger %}  <div class="pregunta_titol_error" id="pregunta7">*{{ text.survey_sociodemo.pr7 }} ({{ text.common.error_opcio }})</div>{%  endif %}
+                {% if not pr7_danger %}<div class="pregunta_titol">{{ text.survey_sociodemo.pr7 }}</div>{%  endif %}
+                <div class="btn-toolbar" data-toggle="buttons">
+                    <input type="hidden" name="pr7" value="{{ pr7 }}">
+                    <button name="pr7" id="pr7_r1" value="r1" class="button_L bx bx-option {{ pr7_r1_checked }}">{{ text.survey_sociodemo.pr7_r1 | safe }}</button>
+                    <button name="pr7" id="pr7_r2" value="r2" class="button_L bx bx-option {{ pr7_r2_checked }}">{{ text.survey_sociodemo.pr7_r2 | safe }}</button>
+                    <button name="pr7" id="pr7_r3" value="r3" class="button_L bx bx-option {{ pr7_r3_checked }}">{{ text.survey_sociodemo.pr7_r3 | safe }}</button>
+                </div>
+            </div>
+        </form>
+
+    </div> <!-- /container -->
+
+{% endblock %}
+
+{% block javascript %}
+    <script>
+    </script>
+{% endblock %}

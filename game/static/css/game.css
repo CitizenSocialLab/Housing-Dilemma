@@ -1,0 +1,1181 @@
+/***********************************/
+/***** CSS del modal de welcome ****/
+/***********************************/
+.modal-welcome {
+    margin-top: 160px;
+    width:570px;
+    text-align: center;
+}
+
+.modal-content-welcome {
+    background: #D6FFCD; /* Old browsers */
+}
+
+.modal-welcome-body
+{
+    text-align: center;
+    height: 320px;
+}
+
+.modal-welcome-footer
+{
+    text-align: center;
+    background-color: white;
+}
+
+#welcome-modal-start
+{
+    width:300px;
+    height:60px;
+    font-size: 40px;
+}
+
+#presentacio_partida {
+    position:absolute;
+    top:20px;
+    left:-27px;
+    width:570px;
+    text-align:center;
+    font-weight: normal;
+    font-size: 40px;
+    text-transform: uppercase;
+    font-family: oswaldbold;
+}
+
+#presentacio_waiting {
+    position:absolute;
+    top:165px;
+    left:230px;
+}
+
+/************************************/
+/**** CSS del modal de countdown ****/
+/************************************/
+
+.modal-countdown {
+    margin-top: 20px;
+    width:965px;
+    text-align: center;
+}
+.modal-content-countdown {
+    background: #fff; /* Old browsers */
+}
+
+.modal-countdown-body
+{
+    text-align: center;
+    height: 520px;
+}
+
+.modal-countdown-footer
+{
+    text-align: center;
+    height:80px;
+    background-color: #197F03;
+    border-radius: 5px;
+}
+
+#countdown-modal-start
+{
+    width:300px;
+    height:60px;
+    font-size: 40px;
+}
+
+#countdown_titol {
+    position: absolute;
+    top: -2px;
+    left: 0px;
+    font-size: 30px;
+    font-family: oswaldbold;
+    color: #fff;
+}
+
+
+#countdown_time {
+    position: absolute;
+    top: -15px;
+    right: 10px;
+    font-size: 50px;
+    text-align: right;
+    width: 100px;
+    font-family: oswaldbold;
+    color: #fff;
+}
+
+#countdown_text_player {
+    position: absolute;
+    top: 10px;
+    left: 50px;
+    font-size: 22px;
+    text-align: justify;
+    width: 800px;
+    font-family: ralewaymedium;
+}
+
+#countdown_text_house {
+    position: absolute;
+    top: 110px;
+    left: 50px;
+    font-size: 22px;
+    text-align: justify;
+    width: 800px;
+    font-family: ralewaymedium;
+}
+
+#countdown_text_limit {
+    position: absolute;
+    top: 215px;
+    left: 50px;
+    font-size: 22px;
+    text-align: justify;
+    width: 800px;
+    font-family: ralewaymedium;
+}
+
+#countdown_text_reward {
+    position: absolute;
+    top: 400px;
+    left: 50px;
+    font-size: 22px;
+    text-align: justify;
+    width: 800px;
+    font-family: ralewaybold;
+}
+
+.bold_text {
+    font-size: 22px;
+    font-family: ralewaybold;
+}
+
+
+
+
+
+/***********************************/
+/***** CSS del modal de la ronda ***/
+/***********************************/
+
+.image_house{
+    vertical-align:middle;
+    width: 5%;
+}
+
+.image_big_house{
+    vertical-align:middle;
+    width: 8%;
+}
+
+.image_player{
+    vertical-align:middle;
+    width: 5%;
+}
+
+.image_up{
+    vertical-align:middle;
+    width: 3%;
+}
+
+.image_down{
+    vertical-align:middle;
+    width: 3%;
+}
+
+.image_equal{
+    vertical-align:middle;
+    width: 4%;
+}
+
+.text_player {
+    vertical-align:middle;
+    color: #000000;
+    font-size: 14px;
+    width: 100px;
+    font-family: oswaldbold;
+}
+
+.text_time {
+    vertical-align:middle;
+    color: #000000;
+    font-size: 14px;
+    width: 100px;
+    font-family: oswaldregular;
+}
+
+.text_price {
+    vertical-align:middle;
+    color: #000000;
+    font-size: 14px;
+    width: 100px;
+    font-family: oswaldregular;
+}
+
+.text_round {
+    vertical-align:middle;
+    color: #000000;
+    font-size: 14px;
+    width: 100px;
+    font-family: oswaldregular;
+}
+
+.rectangle-player {
+    background-color: #23B204;
+    border-color: #23B204;
+    width: 100px;
+    height: 220px;
+    border-radius: 10px;
+
+}
+
+/*** Players - Selections ***/
+
+
+#rectangle-player1 {
+    position:absolute;
+    top:100px;
+    left:85px;
+}
+
+#icon-player1{
+    position: absolute;
+    top: 145px;
+    left: 110px;
+    color: #000000;
+}
+
+#text-player-number1{
+    position: absolute;
+    top: 120px;
+    left: 35px;
+    width: 200px;
+    color: #000000;
+    line-height:18px;
+    text-align: center;
+}
+
+#text-player1{
+    position: absolute;
+    top: 195px;
+    left: 35px;
+    width: 200px;
+    color: #000000;
+    line-height:18px;
+    text-align: center;
+}
+
+#rectangle-player2 {
+    position:absolute;
+    top:100px;
+    left:213px;
+
+}
+
+#icon-player2{
+    position: absolute;
+    top: 145px;
+    left: 238px;
+    color: #000000;
+}
+
+#text-player-number2{
+    position: absolute;
+    top: 120px;
+    left: 163px;
+    width: 200px;
+    color: #000000;
+    line-height:18px;
+    text-align: center;
+}
+
+#text-player2{
+    position: absolute;
+    top: 195px;
+    left: 163px;
+    width: 200px;
+    color: #000000;
+    line-height:18px;
+    text-align: center;
+}
+
+
+#rectangle-player3 {
+    position:absolute;
+    top:100px;
+    left:340px;
+}
+
+#icon-player3{
+    position: absolute;
+    top: 145px;
+    left: 366px;
+    color: #000000;
+}
+
+#text-player-number3{
+    position: absolute;
+    top: 120px;
+    left: 291px;
+    width: 200px;
+    color: #000000;
+    line-height:18px;
+    text-align: center;
+}
+
+#text-player3{
+    position: absolute;
+    top: 195px;
+    left: 291px;
+    width: 200px;
+    color: #000000;
+    line-height:18px;
+    text-align: center;
+}
+
+#rectangle-player4 {
+    position:absolute;
+    top:100px;
+    left:468px;
+}
+
+#icon-player4{
+    position: absolute;
+    top: 145px;
+    left: 496px;
+    color: #000000;
+}
+
+#text-player-number4{
+    position: absolute;
+    top: 120px;
+    left: 421px;
+    width: 200px;
+    color: #000000;
+    line-height:18px;
+    text-align: center;
+}
+
+#text-player4{
+    position: absolute;
+    top: 195px;
+    left: 421px;
+    width: 200px;
+    color: #000000;
+    line-height:18px;
+    text-align: center;
+}
+
+
+#rectangle-player5 {
+    position:absolute;
+    top:100px;
+    left:595px;
+}
+
+#icon-player5{
+    position: absolute;
+    top: 145px;
+    left: 622px;
+    color: #000000;
+}
+
+#text-player-number5{
+    position: absolute;
+    top: 120px;
+    left: 547px;
+    width: 200px;
+    color: #000000;
+    line-height:18px;
+    text-align: center;
+}
+
+#text-player5{
+    position: absolute;
+    top: 195px;
+    left: 547px;
+    width: 200px;
+    color: #000000;
+    line-height:18px;
+    text-align: center;
+}
+
+
+#rectangle-player6 {
+    position:absolute;
+    top:100px;
+    left:722px;
+}
+
+#icon-player6{
+    position: absolute;
+    top: 145px;
+    left: 750px;
+    color: #000000;
+}
+
+#text-player-number6{
+    position: absolute;
+    top: 120px;
+    left: 675px;
+    width: 200px;
+    color: #000000;
+    line-height:18px;
+    text-align: center;
+}
+
+#text-player6{
+    position: absolute;
+    top: 195px;
+    left: 675px;
+    width: 200px;
+    color: #000000;
+    line-height:18px;
+    text-align: center;
+}
+
+/*** Houses - Selections ***/
+
+#icon-house1{
+    position: absolute;
+    top: 220px;
+    left: 110px;
+    color: #000000;
+}
+
+#text-house1{
+    position: absolute;
+    top: 270px;
+    left: 35px;
+    width: 200px;
+    color: #000000;
+    line-height:18px;
+    text-align: center;
+}
+
+#icon-house2{
+    position: absolute;
+    top: 220px;
+    left: 238px;
+    color: #000000;
+}
+
+#text-house2{
+    position: absolute;
+    top: 270px;
+    left: 163px;
+    width: 200px;
+    color: #000000;
+    line-height:18px;
+    text-align: center;
+}
+
+#icon-house3{
+    position: absolute;
+    top: 220px;
+    left: 366px;
+    color: #000000;
+}
+
+#text-house3{
+    position: absolute;
+    top: 270px;
+    left: 291px;
+    width: 200px;
+    color: #000000;
+    line-height:18px;
+    text-align: center;
+}
+
+#icon-house4{
+    position: absolute;
+    top: 220px;
+    left: 496px;
+    color: #000000;
+}
+
+#text-house4{
+    position: absolute;
+    top: 270px;
+    left: 421px;
+    width: 200px;
+    color: #000000;
+    line-height:18px;
+    text-align: center;
+}
+
+#icon-house5{
+    position: absolute;
+    top: 220px;
+    left: 622px;
+    color: #000000;
+}
+
+#text-house5{
+    position: absolute;
+    top: 270px;
+    left: 547px;
+    width: 200px;
+    color: #000000;
+    line-height:18px;
+    text-align: center;
+}
+
+#icon-house6{
+    position: absolute;
+    top: 220px;
+    left: 750px;
+    color: #000000;
+}
+
+#text-house6{
+    position: absolute;
+    top: 270px;
+    left: 675px;
+    width: 200px;
+    color: #000000;
+    line-height:18px;
+    text-align: center;
+}
+
+#icon-house-revalue{
+    position: absolute;
+    top: 410px;
+    left: 335px;
+    color: #000000;
+}
+
+#text-house-revalue{
+    position: absolute;
+    top: 430px;
+    left: 480px;
+    width: 200px;
+    color: #000000;
+    font-size: 28px;
+    text-align: left;
+    font-family: oswaldbold;
+}
+
+
+#icon-up{
+    position: absolute;
+    top: 425px;
+    left: 430px;
+    color: #000000;
+}
+
+
+#icon-down{
+    position: absolute;
+    top: 425px;
+    left: 430px;
+    color: #000000;
+}
+
+
+#icon-equal{
+    position: absolute;
+    top: 437px;
+    left: 426px;
+    color: #000000;
+}
+
+#message_rent{
+    font-size: 20px;
+    top: 30px;
+    left: 130px;
+    position: absolute;
+    width: 650px;
+    text-align: justify;
+    font-family: oswaldregular;
+}
+
+.bold_text_round {
+    font-size: 20px;
+    font-family: oswaldbold;
+}
+
+
+#message_market{
+    font-size: 20px;
+    top: 320px;
+    left: 130px;
+    position: absolute;
+    width: 650px;
+    text-align: justify;
+    font-family: oswaldregular;
+}
+
+#message_no_rent_status{
+    font-size: 18px;
+    top: 500px;
+    left: 110px;
+    position: absolute;
+    width: 700px;
+    text-align: center;
+    font-family: oswaldbold;
+}
+
+/***********************************/
+
+.modal-ronda {
+    margin-top: 20px;
+    width:965px;
+    text-align: center;
+}
+
+.modal-content-ronda {
+    background: #fff; /* Old browsers */
+}
+
+.modal-ronda-body
+{
+    text-align: center;
+    height: 520px;
+}
+
+.modal-ronda-footer
+{
+    text-align: center;
+    height:80px;
+    background-color: #197F03;
+    border-radius: 5px;
+}
+
+#nextround_titol {
+    position: absolute;
+    top: -2px;
+    left: 0px;
+    font-size: 30px;
+    font-family: oswaldbold;
+    color: #fff;
+}
+
+
+#nextround_time {
+    position: absolute;
+    top: -15px;
+    right: 10px;
+    font-size: 50px;
+    text-align: right;
+    width: 100px;
+    font-family: oswaldbold;
+    color: #fff;
+}
+
+#modal_ronda_msg {
+    font-size: 26px;
+    top: 15px;
+    left: 120px;
+    position: absolute;
+    width: 700px;
+    text-align: center;
+    font-weight: bold;
+    font-family: oswaldbold;
+    text-transform: uppercase;
+}
+
+.resultats_table{
+    table-layout: fixed;
+    width: 700px;
+    background-color: transparent;
+    position: absolute;
+    top: 260px;
+    left: 100px;
+}
+
+table.resultats_table th {
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: oswaldbold;
+    background-color: #197F03;
+    color: #fff;
+}
+
+
+table.resultats_table td {
+    font-weight: normal;
+    font-size: 18px;
+    font-family: ralewaymedium;
+}
+
+
+.top_bottom_bold {
+    border-top:4px solid;
+    border-bottom:4px solid;
+    border-color:#197F03;
+}
+
+.top_bold {
+    border-top:4px solid;
+    border-color:#197F03;
+}
+
+.bottom_bold {
+    border-bottom:4px solid;
+    border-color:#197F03;
+}
+
+.top_thin {
+    border-top:thin solid;
+    border-color:#197F03;
+}
+
+.bottom_thin {
+    border-bottom:thin solid;
+    border-color:#197F03;
+}
+
+#resultat_objectiu {
+    position: absolute;
+    top: 70px;
+    left: 300px;
+    width: 140px;
+    font-size: 70px;
+    font-weight: normal;
+    height: 140px;
+    border-radius: 5px;
+    background-color: #197F03;
+    line-height: 170px;
+    text-align: center;
+    font-family: oswaldbold;
+    color: #fff;
+}
+
+#text_objectiu {
+    position: absolute;
+    top: 90px;
+    left: 300px;
+    width: 140px;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-family: oswaldbold;
+    color: #fff;
+
+}
+
+#resultat_contribucio {
+    position: absolute;
+    top: 70px;
+    right: 300px;
+    width: 140px;
+    font-size: 70px;
+    font-weight: normal;
+    height: 140px;
+    border-radius: 5px;
+    background-color: #23B204;
+    line-height: 170px;
+    text-align: center;
+    border-style: solid;
+    border-color: #197F03;
+    border-width: 5px;
+    font-family: oswaldbold;
+
+}
+
+#text_contribucio {
+    position: absolute;
+    top: 90px;
+    right: 300px;
+    width: 140px;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-family: oswaldbold;
+
+}
+
+
+#text_nota {
+    position: absolute;
+    top: 505px;
+    left: 15px;
+    font-size: 16px;
+    font-family: ralewaylight;
+}
+
+
+
+/**************************************/
+/***** CSS del final de la partida ****/
+/**************************************/
+
+.modal-final {
+    margin-top: 90px;
+    width: 780px;
+    text-align: center;
+}
+
+.modal-content-final {
+    background: #D6FFCD; /* Old browsers */
+}
+
+.modal-final-body
+{
+    height: 360px;
+    text-align: center;
+}
+
+.modal-final-footer
+{
+    text-align: center;
+    background-color: white;
+}
+
+#fi_partida {
+    position: absolute;
+    top: 10px;
+    left: 8px;
+    width: 700px;
+    text-align: center;
+    font-weight: normal;
+    font-size: 36px;
+    text-transform: uppercase;
+    font-family: oswaldbold;
+}
+
+#fi_partida_imatge {
+    position: absolute;
+    top: 86px;
+    left: 0px;
+    width: 200px;
+}
+
+
+#fi_partida_text {
+    position: absolute;
+    top: 110px;
+    left: 80px;
+    text-align: left;
+    font-size: 26px;
+    width: 600px;
+    font-family: ralewaymedium;
+}
+
+
+#modal-final-titol
+{
+    position:absolute;
+    top:80px;
+    left:220px;
+    width:500px;
+    text-align:left;
+    font-weight: normal;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.modal-final-text {
+    position:absolute;
+    top:110px;
+    left:0;
+    width:760px;
+    text-align:center;
+    font-size: 40px;
+    height: 60px;
+}
+
+#final-modal-fi{
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #999999;
+    width: 240px;
+}
+
+#resp_correctes{
+    font-size: 40px;
+}
+
+#resp_incorrectes{
+    font-size: 40px;
+}
+
+#resp_diners {
+    font-size: 40px;
+}
+
+#quadre1 {
+    position:absolute;
+    top:160px;
+    left:220px;
+
+    background-color: #35ba3f;
+    border-color: #35ba3f;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+#quadre1_text {
+    position:absolute;
+    top:175px;
+    left:220px;
+    width: 100px;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+}
+
+
+#quadre1_results {
+    position:absolute;
+    top:205px;
+    left:220px;
+    width: 100px;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+}
+
+
+#quadre2 {
+    position:absolute;
+    top:160px;
+    left:330px;
+
+    background-color: #ee1c36;
+    border-color: #ee1c36;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+#quadre2_text {
+    position:absolute;
+    top:175px;
+    left:330px;
+    width: 100px;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+}
+
+#quadre2_results {
+    position:absolute;
+    top:205px;
+    left:330px;
+    width: 100px;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+}
+
+
+#quadre3 {
+    position:absolute;
+    top:160px;
+    left:440px;
+
+    background-color: #f2c857;
+    border-color: #f2c857;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+#quadre3_icona {
+    position:absolute;
+    top:171px;
+    left:470px;
+    width: 40px;
+    color: white;
+}
+
+
+#quadre3_results {
+    position:absolute;
+    top:210px;
+    left:440px;
+    width: 100px;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+}
+
+#medalla {
+    position:absolute;
+    top:145px;
+    left:550px;
+    width: 130px;
+}
+
+/*********************************************/
+/*************** CSS del timer ***************/
+/*********************************************/
+
+.logo {
+    position:absolute;
+    top:12px;
+    left:15px;
+    width:160px;
+    text-align: left;
+    z-index:2;
+}
+
+#timer_title{
+    position: absolute;
+    top: 10px;
+    left: 40px;
+    width: 900px;
+    text-align: center;
+    font-size: 30px;
+    color: #FFFFFF;
+    font-family: oswaldbold;
+}
+
+#timer_background {
+    z-index: 2;
+    position: absolute;
+    text-align: left;
+    width: 100%;
+    background-color: #FFFFFF;
+    height: 30px;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #ffffff;
+}
+
+#timer_progress {
+    z-index: 2;
+    position: absolute;
+    text-align: left;
+    width: 100%;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    height: 30px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #ffffff;
+}
+
+#timer-wrap{
+    position: absolute;
+    top: 50px;
+    left: 170px;
+    width: 625px;
+    padding-top: 10px;
+}
+
+
+/****************************************************/
+/**************** CSS Decision Screen ***************/
+/****************************************************/
+
+#text-bucket{
+    position: absolute;
+    top: 200px;
+    left: 100px;
+    width: 800px;
+    text-align: justify;
+    font-size: 28px;
+    font-family: ralewaymedium;
+}
+
+#text-contribucio {
+    position: absolute;
+    top: 250px;
+    left: 100px;
+    width: 800px;
+    text-align: justify;
+    font-size: 28px;
+    font-family: ralewaymedium;
+}
+
+#text-info-extra {
+    position: absolute;
+    top: 360px;
+    left: 100px;
+    width: 800px;
+    text-align: justify;
+    font-size: 20px;
+    font-family: ralewaybold;
+}
+
+#button-0{
+    position: absolute;
+    top: 460px;
+    left: 300px;
+    height: 125px;
+    width: 125px;
+    padding: 0 0 0 0;
+    border-radius: 6px;
+    font-size: 80px;
+    border: 2px solid #197F03;
+    background-color: #D6FFCD;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    color: #197F03;
+}
+
+
+#button-1{
+    position: absolute;
+    top: 460px;
+    right: 300px;
+    height: 125px;
+    width: 125px;
+    padding: 0 0 0 0;
+    border-radius: 6px;
+    font-size: 80px;
+    border: 2px solid #197F03;
+    background-color: #D6FFCD;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    color: #197F03;
+}
+
+
+#image-bucket{
+    position: absolute;
+    top: 190px;
+    left: 665px;
+    width: 110px;
+}
+
+.bold-text-bucket {
+    font-size: 32px;
+    font-family: ralewaybold;
+}
+
+#text-ronda{
+    position: absolute;
+    top: 115px;
+    left: 40px;
+    width: 900px;
+    text-align: center;
+    font-size: 35px;
+    font-family: oswaldbold;
+}
+
+.user_info {
+    position: absolute;
+    top: 110px;
+    right: 5px;
+    width: 610px;
+    text-align: right;
+    font-size: 22px;
+    z-index: 2;
+    font-family: oswaldbold;
+}
+
+.waiting_main {
+    position: absolute;
+    top: 450px;
+    left: 300px;
+    width: 400px;
+    text-align: center;
+}
+
+.waiting_text {
+    position: absolute;
+    top: 560px;
+    left: 140px;
+    width: 700px;
+    text-align: center;
+}

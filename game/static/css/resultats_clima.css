@@ -1,0 +1,150 @@
+/*********************/
+/* CSS Final Results */
+/*********************/
+
+
+#text_result {
+    position: absolute;
+    top: 120px;
+    left: 40px;
+    width: 900px;
+    text-align: justify;
+    font-size: 18px;
+    font-family: ralewayregular;
+}
+
+#text_title_table {
+    position: absolute;
+    top: 240px;
+    left: 40px;
+    width: 900px;
+    text-align: justify;
+    font-size: 18px;
+    font-family: oswaldbold;
+    text-decoration: underline;
+}
+
+.bold_result{
+    font-family: ralewaybold;
+}
+
+/* Table */
+
+#partida_resum_nota {
+    position: absolute;
+    top: 596px;
+    left: 10px;
+    font-size: 10pt;
+    font-family: ralewaythin;
+}
+
+#table_partida_detail {
+    position: absolute;
+    top: 240px;
+    font-size: 14px;
+    left: 40px;
+    right: 40px;
+
+}
+
+
+table {
+    table-layout: fixed;
+}
+
+table td{
+    text-align: center;
+    height: 40px;
+    width: 40px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #197F03;
+    font-size: 14px;
+    font-family: ralewayregular;
+}
+
+table th{
+    text-align: center;
+    font-family: oswaldsemibold;
+    text-transform: uppercase;
+    width: 40px;
+    height: 40px;
+    color: #fff;
+}
+
+.rounds {
+    background-color: #197F03;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #197F03;
+    font-size: 14px;
+    color: #fff;
+    font-family: oswaldsemibold;
+}
+
+
+.label_market {
+    background-color: #33FF07;
+    width: 40px;
+    height: 40px;
+    border: 0px;
+    border: 2px solid #197F03;
+    font-size: 14px;
+    font-family: oswaldsemibold;
+    color: #000;
+}
+
+.market {
+    background-color: #33FF07;
+    width: 40px;
+    height: 40px;
+    border: 0px;
+    border-top: 2px solid #197F03;
+    border-bottom: 2px solid #197F03;
+    font-size: 14px;
+    font-family: ralewaysemibold;
+    color: #000;
+}
+
+.market_player {
+    background-color: #33FF07;
+    width: 40px;
+    height: 40px;
+    border: 0px;
+    border: 2px solid #197F03;
+    font-size: 14px;
+    font-family: "ralewayregular";
+    color: #000;
+}
+
+.labels {
+    background-color: #197F03;
+    border: 2px solid #197F03;
+    font-family: oswaldsemibold;
+    font-size: 14px;
+    color: #fff;
+}
+
+.cell_bold {
+    background-color: #DBFFCD;
+    border: 1px solid #197F03;
+    font-family: "ralewaysemibold";
+}
+
+.row_bold {
+    background-color: #23B204;
+    border-top: 2px solid #197F03;
+    border-bottom: 2px solid #197F03;
+    font-family: "ralewaybold";
+}
+
+.cell_aggregated {
+    background-color: #33FF07;
+    border: 2px solid #197F03;
+    font-family: "ralewaybold";
+    font-size: 14px;
+    color: #000000;
+    width: 70px;
+}
+
+
+

@@ -1,0 +1,87 @@
+/*********************/
+/* CSS Final Results */
+/*********************/
+
+.user_info {
+    position: absolute;
+    top: 110px;
+    right: 5px;
+    width: 610px;
+    text-align: right;
+    font-size: 22px;
+    z-index: 2;
+    font-family: oswaldbold;
+}
+
+.endowment_final {
+    position: absolute;
+    text-align: center;
+    top: 140px;
+    left: 40px;
+    width: 900px;
+    font-size: 26px;
+    font-family: oswaldbold;
+}
+
+.bold_endowment_final {
+    font-size: 40px;
+    font-family: oswaldbold;
+}
+
+.bold_tickets {
+    font-size: 24px;
+    font-family: oswaldbold;
+}
+
+.message {
+    position: absolute;
+    text-align: justify;
+    top: 160px;
+    left: 40px;
+    width: 900px;
+    font-size: 22px;
+    font-family: ralewaymedium;
+}
+
+.text_end {
+    position: absolute;
+    text-align: justify;
+    top: 400px;
+    left: 40px;
+    width: 900px;
+    font-size: 16px;
+    font-family: ralewayregular;
+}
+
+
+.vull-jugar {
+    position: absolute;
+    top: 605px;
+    right: 16px;
+    width: 400px;
+    text-align: right;
+}
+
+#imatge_logos {
+    width: 530px;
+    position: absolute;
+    top: 300px;
+    left: 250px;
+}
+
+.fons {
+    z-index: -5;
+    top:0;
+    left:0;
+    width:1024px;
+    height:490px ;  /* XX: ADDED 100 */
+    margin-left: -15px;
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top,  #FAE8E8 0%, #FAE8E8 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FAE8E8), color-stop(100%,#FAE8E8)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #FAE8E8 0%,#FAE8E8 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #FAE8E8 0%,#FAE8E8 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #FAE8E8 0%,#FAE8E8 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #FAE8E8 0%,#FAE8E8 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FAE8E8', endColorstr='#FAE8E8',GradientType=0 ); /* IE6-9 */
+}

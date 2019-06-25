@@ -1,0 +1,88 @@
+{% extends "admin.html" %}
+
+
+{% block stylesheet %}
+    <link href="/static/css/admin.css" rel="stylesheet" media="screen">
+    <link href="/static/css/admin_partida_list.css" rel="stylesheet" media="screen">
+{% endblock %}
+
+
+{% block content_admin %}
+    <div id="llista_partides_titol">Listado últimas partidas</div>
+    <div id="llista_partides"></div>
+{% endblock %}
+
+{% block javascript %}
+
+        <script>
+
+            function detailPartida(num_partida) {
+                window.location.href = '/es/admin/partida_detail/'+num_partida+'/'
+            }
+
+
+            function update_list() {
+                $.ajax({
+                    url: '/es/ws/llistat_partides/',
+                    success: function(data) {
+
+                            mytext = '<table width="90%" class="partides"><tr>'+
+                                    '<th style="font-size:15px; text-align:center; font-family:oswaldbold; width:50px;">'+ "ID" + '</th>'+
+                                    '<th style="font-size:15px; text-align:center; font-family:oswaldbold; width:160px;">'+ "STATUS" +'</th>'+
+                                    '<th style="font-size:15px; text-align:center; font-family:oswaldbold; width:120px;">'+ "START" +'</th>'+
+                                    '<th style="font-size:15px; text-align:center; font-family:oswaldbold; width:120px;">'+ "END" +'</th>'+
+                                    '<th style="font-size:15px; text-align:center; font-family:oswaldbold; width:100px;">'+ "WEALTH" +'</th>'+
+                                    '<th style="font-size:15px; text-align:center; font-family:oswaldbold; width:100px;">'+ "REWARD" +'</th>'+
+                                    '<th style="font-size:15px; text-align:center; font-family:oswaldbold; width:75px;">'+ "GOAL" +'</th>'+
+                                    '<th style="font-size:15px; text-align:center; font-family:oswaldbold; width:75px;">'+ "TICKETS" +'</th>'+
+                                    '<th style="font-size:15px; text-align:center; font-family:oswaldbold; width:0px;">'+ "" +'</th>'+
+                                    '<th></th>';
+
+                            for (i = 0; i < data.partida.length; i++) {
+
+                                // Calcul diners totals reals
+                                var total_diners_reals = 0
+                                console.log(data)
+                                for (j = 0; j < data.partida[i].guanys.length; j++){
+                                    console.log(data.partida[i].guanys[j])
+                                    total_diners_reals = total_diners_reals + data.partida[i].guanys[j]
+                                }
+                                
+                                sorteo = "-";
+
+                                if (data.partida[i].goal_achieved) objetivo = "Sí";
+                                else objetivo = "No";
+
+                                mytext += '<tr>' +
+                                        '<td style="font-size:14px; text-align:center; width:50px; font-family:ralewaymedium;">' + data.partida[i].num_partida  + '</td>'+
+                                        '<td style="font-size:14px; text-align:center; width:160px; font-family:ralewaymedium;">' + data.partida[i].status + '</td>'+
+                                        '<td style="font-size:14px; text-align:center; width:120px; font-family:ralewaymedium;">' + data.partida[i].date_creation + '</td>'+
+                                        '<td style="font-size:14px; text-align:center; width:120px; font-family:ralewaymedium;">' + data.partida[i].date_end + '</td>'+
+                                        '<td style="font-size:14px; text-align:center; width:100px; font-family:ralewaymedium;">' + data.partida[i].wealth + '</td>'+
+                                        '<td style="font-size:14px; text-align:center; width:100px; font-family:ralewaymedium;">' + data.partida[i].reward + '</td>'+
+                                        '<td style="font-size:14px; text-align:center; font-family:ralewaymedium;">' + objetivo + '</td>'+
+                                        '<td style="font-size:16px; text-align:center; font-weight:bold; font-family:ralewaymedium;">' + total_diners_reals + ' </td>'+
+                                        '<td style="width:100px;"><button onclick="detailPartida(' + data.partida[i].num_partida + ')" class="bx-push bx bx-admin-small" style="width:100px;height:35px;border-color:white;border-width:2px;">' + "Details" + '</button></td>'+
+                                        '</tr>'
+
+
+
+                            }
+                            $('#llista_partides').html(mytext);
+
+                        setTimeout(function(){update_list()}, 100000);
+                    },
+                    error: function(data) {
+                         setTimeout(function(){update_list()}, 100000);
+                    }
+                });
+            }
+
+            $(document).ready(function() {
+                update_list();
+            });
+        </script>
+
+
+
+{% endblock %}

@@ -1,0 +1,160 @@
+{% extends "admin.html" %}
+
+
+{% block stylesheet %}
+    <link href="/static/css/admin.css" rel="stylesheet" media="screen">
+    <link href="/static/css/admin_registre.css" rel="stylesheet" media="screen">
+
+{% endblock %}
+
+
+{% block content_admin %}
+
+    {% if not registre_iniciat  %}
+
+        <div id="usuaris_titol">
+            Currently there are no games registering participants...
+        </div>
+
+        <form method="post" action="/{{ lang }}/admin/registre">
+            <button id="boto_registre" type="submit" name="registre" class="bx-push bx bx-main" >
+                Open new register
+            </button>
+
+            <div class="control_wealth_previous">
+                <div class="control_wealth_text" style="font-weight: bold">Wealth</div>
+                <div class="btn-toolbar" data-toggle="buttons">
+                    <input type="hidden" name="control_wealth" value="{{ control_wealth }}">
+                    <button name="control_wealth" id="control_wealth_0" value="EQUAL" class="button_XS bx bx-option {{ control_wealth_0_checked }}">Equal</button>
+                    <!--<button name="control_wealth" id="control_wealth_1" value="UNEQUAL" class="button_XS bx bx-option {{ control_wealth_1_checked }}">Unequal</button>-->
+                    <!--<button name="control_wealth" id="control_wealth_2" value="EMERGE" class="button_XS bx bx-option {{ control_wealth_2_checked }}">Emerge</button>-->
+                </div>
+            </div>
+
+            <div class="control_intervention_previous">
+                <div class="control_intervention_text" style="font-weight: bold">Intervention</div>
+                <div class="btn-toolbar" data-toggle="buttons">
+                    <input type="hidden" name="control_intervention" value="{{ control_intervention }}">
+                    <button name="control_intervention" id="control_intervention_0" value="NONE" class="button_XS bx bx-option {{ control_intervention_0_checked }}">None</button>
+                    <button name="control_intervention" id="control_intervention_1" value="EMERGE" class="button_XS bx bx-option {{ control_intervention_0_checked }}">Emerge</button>
+                    <button name="control_intervention" id="control_intervention_2" value="HIGH" class="button_XS bx bx-option {{ control_intervention_0_checked }}">High</button>
+                    <button name="control_intervention" id="control_intervention_3" value="LOW" class="button_XS bx bx-option {{ control_intervention_0_checked }}">Low</button>
+                    <button name="control_intervention" id="control_intervention_4" value="BOTH" class="button_XS bx bx-option {{ control_intervention_0_checked }}">Both</button>
+                </div>
+            </div>
+
+        </form>
+
+    {%  else %}
+
+        <div id="llista_usuaris_titol">
+            Participants Register
+        </div>
+
+        <div id="llista_usuaris"></div>
+
+        <form method="post" action="/{{ lang }}/admin/registre">
+
+            <div class="control_wealth">
+                <div class="control_wealth_text" style="font-weight: bold">Wealth</div>
+                <div class="btn-toolbar" data-toggle="buttons">
+                    <input type="hidden" name="control_wealth" value="{{ control_wealth }}">
+                    <button name="control_wealth" id="control_wealth_0" value="EQUAL" class="button_XS bx bx-option {{ control_wealth_0_checked }}">Equal</button>
+                    <!--<button name="control_wealth" id="control_wealth_1" value="UNEQUAL" class="button_XS bx bx-option {{ control_wealth_1_checked }}" hidden>Unequal</button>-->
+                    <!--<button name="control_wealth" id="control_wealth_2" value="EMERGE" class="button_XS bx bx-option {{ control_wealth_2_checked }}" hidden>Emerge</button>-->
+                </div>
+            </div>
+
+            <div class="control_intervention">
+                <div class="control_intervention_text" style="font-weight: bold">Intervention</div>
+                <div class="btn-toolbar" data-toggle="buttons">
+                    <input type="hidden" name="control_intervention" value="{{ control_intervention }}">
+                    <button name="control_intervention" id="control_intervention_0" value="NONE" class="button_XS bx bx-option {{ control_intervention_0_checked }}">None</button>
+                    <button name="control_intervention" id="control_intervention_1" value="EMERGE" class="button_XS bx bx-option {{ control_intervention_1_checked }}">Emerge</button>
+                    <button name="control_intervention" id="control_intervention_2" value="HIGH" class="button_XS bx bx-option {{ control_intervention_2_checked }}">High</button>
+                    <button name="control_intervention" id="control_intervention_3" value="LOW" class="button_XS bx bx-option {{ control_intervention_3_checked }}">Low</button>
+                    <button name="control_intervention" id="control_intervention_4" value="BOTH" class="button_XS bx bx-option {{ control_intervention_4_checked }}">Both</button>
+                </div>
+            </div>
+
+            <button id="boto_iniciar" type="submit" name="registre" class="bx-push bx bx-main" >
+                Empezar!!
+            </button>
+        </form>
+
+        {% if partida_jugant %}
+        <div id="partida_jugant">
+            The game can not start, there is a game active.
+        </div>
+        {%  endif %}
+
+    {%  endif %}
+
+{% endblock %}
+
+{% block javascript %}
+
+    {% if registre_iniciat  %}
+        <script>
+
+            function deleteUser(id_user) {
+                $.ajax({
+                    url: '/es/ws/delete_user/'+id_user+'/',
+                    success: function(data) {
+                        console.log(data)
+                    }})
+            }
+
+            function update_list() {
+                $.ajax({
+                    url: '/es/ws/usuaris_registrats/',
+                    success: function(data) {
+                        if(data.registering==true) {
+                            mytext = '<table width="90%"><tr>'+
+                                    '<th style="width:50px;">#</th>'+
+                                    '<th style="width:50px;">ID</th>'+
+                                    '<th style="width:50px;">NAME</th>'+
+                                    '<th style="width:150px;">LAST STATUS</th>'+
+                                    '<th style="width:50px;">LOW</th>'+
+                                    '<th style="width:50px;">HIGH</th>'+
+                                    '<th style="width:220px;">DATE</th>'+
+                                    '<th style="width:100px;"></th>'+
+                                    '</tr></table>';
+                            for (i = 0; i < data.usuaris.length; i++) {
+                                if (data.usuaris[i].status == "VERIFICATION") {
+                                    status_text = data.usuaris[i].status +' ('+ data.usuaris[i].verification +')'
+                                }else{
+                                    status_text = data.usuaris[i].status
+                                }
+
+                                mytext += '<table width="90%"><tr>'+
+                                        '<td style="width:50px; font-size:22px; font-family:ralewaybold">' + (i+1) + '</td>'+
+                                        '<td style="width:50px;">' + data.usuaris[i].id_user  + '</td>'+
+                                        '<td style="width:50px;">' + data.usuaris[i].nom + '</td>'+
+                                        '<td style="width:150px;">' + status_text + '</td>'+
+                                        '<td style="width:50px;">' + data.usuaris[i].low + '</td>'+ // Variable Low
+                                        '<td style="width:50px;">' + data.usuaris[i].high + '</td>'+ // Variable High
+                                        '<td style="width:220px;">' + data.usuaris[i].date + '</td>'+
+                                        '<td style="width:100px;"><button onclick="deleteUser(' + data.usuaris[i].id_user + ')" class="bx-push bx bx-admin-small" style="width:100px;height:30px;background-color:#ff0000;border-color:#ff0000">' + "DELETE" + '</button></td>'+
+                                        '</tr></table>'
+                            }
+                            $('#llista_usuaris').html(mytext);
+                        }
+                        setTimeout(function(){update_list()}, 1000);
+                    },
+                    error: function(data) {
+                         setTimeout(function(){update_list()}, 1000);
+                    }
+                });
+            }
+
+            $(document).ready(function() {
+                update_list();
+            });
+        </script>
+
+    {%  endif %}
+
+
+{% endblock %}
+

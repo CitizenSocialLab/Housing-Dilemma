@@ -1,0 +1,252 @@
+{% extends "admin.html" %}
+
+
+{% block stylesheet %}
+    <link href="/static/css/admin.css" rel="stylesheet" media="screen">
+    <link href="/static/css/admin_partida_detail.css" rel="stylesheet" media="screen">
+{% endblock %}
+
+
+{% block content_admin %}
+
+    <div id="usuaris_titol" hidden>La partida no existe</div>
+    <div id="table_partida"></div>
+    <div id="table_partida_detail"></div>
+
+{% endblock %}
+
+{% block javascript %}
+
+        <script>
+            function tancarPartida(num_partida) {
+                //console.log("Tancant partida " + num_partida);
+                $.ajax({
+                    url: '/es/ws/tancar_partida/'+num_partida+'/'
+                });
+            }
+
+            function tancarRonda(num_partida) {
+                //console.log("Tancant ronda " + num_partida);
+                $.ajax({
+                    url: '/es/ws/tancar_ronda/'+num_partida+'/'
+                });
+            }
+
+
+            function update_status() {
+                $.ajax({
+                    url: '/es/ws/stats_partida_detail/{{ num_partida }}/',
+                    success: function(data) {
+
+                        console.log(data)
+
+                        $("#table_partida").empty();
+                        $("#table_partida_detail").empty();
+
+
+                        this.diners_heterogenis =  data.diners_heterogenis;
+                        this.imatges_refors = data.imatges_refors;
+                        this.status_partida = data.status_partida;
+
+
+                        if(true) {
+                            $('#usuaris_titol').hide();
+
+                            var table = '<table class="table_partida">';
+
+                            table+="<tr style='cellpadding:10;'>";
+                            table+="<td colspan=4 style=font-size:22px;font-family:oswaldbold;cell>Partida #"+data.num_partida+"</td>";
+                            table+="</tr>";
+                            table+="<tr>";
+                            table+='<td style="font-size:14px;font-family:ralewaymedium;width:10%;"> Creation: ' + data.date_creacio + '</td>';
+                            table+="</tr>";
+                            table+="<tr>";
+                            table+='<td style="font-size:14px;font-family:ralewaymedium; width:10%;"> Start: '+ data.date_inici + '</td>';
+                            table+="</tr>";
+                            table+="<tr>";
+                            table+='<td style="font-size:14px;font-family:ralewaymedium; width:10%;"> Final: '+data.date_final+'</td>';
+                            table+="</tr>";
+                            table+="<tr>";
+                            table+='<td style="font-size:16px; width:10%; font-family:ralewaybold;"> Wealth: '+data.control_wealth+' </td>';
+                            table+="</tr>";
+                            table+="<tr>";
+                            table+='<td style="font-size:16px; width:10%; font-family:ralewaybold;"> Intervention: '+data.control_intervention+' </td>';
+                            table+="</tr>";
+
+                            if (data.control_intervention == "BOTH"){
+                                table+='<td style="font-size:16px; width:10%; font-family:ralewaybold;"> Low Limit: '+data.limit_low+' </td>';
+                                table+="</tr>";
+                                table+='<td style="font-size:16px; width:10%; font-family:ralewaybold;"> High Limit: '+data.limit_high+' </td>';
+                                table+="</tr>";
+                            }
+
+                            if (data.control_intervention == "HIGH") {
+                                table+='<td style="font-size:16px; width:10%; font-family:ralewaybold;"> High Limit: '+data.limit_high+' </td>';
+                                table+="</tr>";
+                            }
+
+                            if (data.control_intervention == "LOW") {
+                                table+='<td style="font-size:16px; width:10%; font-family:ralewaybold;"> Low Limit: '+data.limit_low+' </td>';
+                                table+="</tr>";
+                            }
+
+                            table+='<td style="font-size:16px; width:10%; font-family:ralewaysemibold;"> '+data.status_game+' </td>';
+                            table+="</tr>";
+
+                            table+="</table> <br />";
+
+                            $("#table_partida").append(table );
+
+                            var table2 = '<table class="table_partida_detail">';
+
+                            table2+="<tr style='cellpadding:10;'>";
+                            table2+="<td colspan=16 style=font-size:22px;font-weight:bold;cell></td>";
+                            table2+="</tr>";
+                                //"nicknames": [up.nickname for up in users_partida],
+                                //"endowment_initial": [up.endowment_initial for up in users_partida],
+                                //"diners_contribuits": [up.endowment_initial - up.endowment_current for up in users_partida],
+                                //"diners_reals": ""
+                            table2 += '<tr class="top_bottom_bold_black">';
+                            table2+='<th style="font-size:16px; width:10px;"></td>';
+                            table2+='<th style="font-size:16px; width:100px;"> ID </td>';
+
+                            for (i=1; i <= data.num_round; i++) {
+                                if(typeof data.rounds_house.house_price[i - 1] === "undefined") {
+                                    text_round = 'R' + i + '<br>(000)'
+                                    table2 += '<th class style="font-size:16px;">' + text_round + '</td>';
+                                }else{
+                                    text_round = 'R' + i + '<br>(' + data.rounds_house.house_price[i - 1] +')'
+                                    table2 += '<th class style="font-size:16px;">' + text_round + '</td>';
+                                }
+
+
+                            }
+
+                            table2+='<th style="font-size:16px; width:50px;  font-weight: bold"> Tcks </td>';
+                            table2+='<th style="font-size:16px; width:50px;  font-weight: bold"> Bots </td>';
+                            table2+='<th style="font-size:16px; width:50px;"> Rent </td>';
+                            table2+='<th style="font-size:16px; width:50px;"> House </td>';
+                            table2+='<th style="font-size:16px; width:50px;"> Endow </td>';
+                            table2+='<th style="font-size:16px; width:50px;  font-weight: bold"> Sav </td>';
+
+                            table2+="</tr>";
+
+                            for (i=0; i < data.rounds_player.nicknames.length; i++) {
+                                var player = i+1;
+                                table2 += '<tr class="top_bottom_border_bold_colored">';
+                                table2+='<td style="font-size:16px; font-family: ralewayblack">'+ player +'</td>';
+                                table2+='<td style="font-size:16px; ">'+ data.rounds_player.nicknames[i].substr(data.rounds_player.nicknames[i].length - 3);+'</td>';
+
+
+
+
+                                for (j=0; j < data.num_round ; j++){
+                                    ronda_val = '-'
+                                    table_row ='<td style="font-size:16px; width:20px; font-family:ralewaymedium;">'+ ronda_val +'</td>';
+
+                                    if(data.rondes[i][j] === null) {
+                                        ronda_val = '-';
+                                    }else {
+                                        if (data.robot[i][j]){
+                                            ronda_val = parseFloat(data.variation[i][j]).toFixed(0);
+                                        }else {
+                                            ronda_val = parseFloat(data.variation[i][j]).toFixed(0)+'*';
+                                        }
+
+                                        if (data.rondes[i][j]){
+                                                table_row='<td style="font-size:16px; width:20px; font-family:ralewaybold;">'+ ronda_val +'</td>';
+                                        }else{
+                                                table_row='<td style="font-size:14px; width:20px; font-family:ralewaymedium;">'+ ronda_val +'</td>';
+                                        }
+                                    }
+                                    table2+=table_row
+
+                                }
+
+                                table2 += '<td style="font-size:16px; font-family: ralewayblack;">' + data.tickets[i] + '</td>';
+                                table2 += '<td style="font-size:16px; font-family: ralewayblack;">' + data.bots[i] + '</td>';
+
+                                // Rent
+                                var rent = '-'
+                                if (data.rounds_player.house_price[i] != "-") {
+                                    rent = data.rounds_player.rent[i][data.rounds_player.rent[i].length - 1];
+                                }
+                                table2+='<td style="font-size:16px;">'+rent+'</td>';
+
+                                // House
+                                table2+='<td style="font-size:16px;">'+data.rounds_player.house_price[i]+'</td>';
+
+                                // Endowment
+                                table2+='<td style="font-size:16px;">'+ data.endowment_initial[i]+'</td>';
+
+                                var savings = 0
+                                if (data.rounds_player.house_price[i] != "-") {
+                                    savings = (rent / data.endowment_initial[i]).toFixed(2);
+                                }
+                                table2 += '<td style="font-size:16px; font-family: ralewayblack">' + savings + '</td>';
+                                table2 += "</tr>";
+                            }
+                           table2 += '<tr class="top_bottom_bold_colored">';
+
+                           table2+='<th></th>';
+                           table2+='<th></th>';
+
+                           // Diners per ronda
+                           for (i = 0; i < data.num_round; i++) {
+                               var total_ronda = 0
+                               for (j = 0; j < data.rondes.length; j++){
+                                   total_ronda += data.rondes[j][i];
+                                }
+                               table2+='<th>'+ total_ronda +'</th>';
+                           }
+
+                            // Vals
+                            total_vals = 0;
+                            for (i = 0; i < data.tickets.length; i++) total_vals = total_vals + data.tickets[i]
+                            table2 += '<th>' + total_vals + '</th>';
+
+                            // Bots
+                            total_bots = 0;
+                            for (i = 0; i < data.bots.length; i++) total_bots = total_bots + data.bots[i]
+                            table2 += '<th>' + total_bots + '</th>';
+
+                            table2+='<th></th>';
+
+                           // House average
+                           table2+='<th style="font-size:16px; font-weight: bold; color: #FFFFFF;">'+ parseFloat(data.rounds_player.rent_average).toFixed(2) +'</th>';
+
+
+                           // Diners total inicials
+                           var total_inicial = '';
+                           table2+='<th>'+ total_inicial +'</th>';
+
+                           // Diners totals restants
+                           var total_restants = '';
+                           table2+='<th>'+ total_restants +'</th>';
+
+
+                            table2+="</tr>";
+
+                            $("#table_partida_detail").append(table2 );
+
+
+                        }
+                        else
+                        {
+                            $('#usuaris_titol').show();
+                        }
+
+                        setTimeout(function(){update_status()}, 2000);
+                    },
+                    error: function(data) {
+                        setTimeout(function(){update_status()}, 2000);
+                    }
+                });
+            }
+
+            $(document).ready(function() {
+                update_status();
+            });
+        </script>
+
+{% endblock %}

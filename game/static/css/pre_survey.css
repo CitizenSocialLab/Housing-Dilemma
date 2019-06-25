@@ -1,0 +1,433 @@
+/************************/
+/***** Final Survey *****/
+/************************/
+
+.text_main {
+    position: absolute;
+    top: 250px;
+    left: 67px;
+    width: 824px;
+    text-align: left;
+    font-weight: normal;
+    font-size: 26px;
+    z-index: 2;
+}
+
+.text_gracias {
+    position: absolute;
+    top: 200px;
+    left: 67px;
+    width: 824px;
+    text-align: center;
+    font-weight: normal;
+    font-size: 26px;
+    z-index: 2;
+}
+
+/**************************/
+/***** Question Title *****/
+/**************************/
+
+.pregunta_titol {
+    text-align: left;
+    font-weight: normal;
+    font-size: 18px;
+    font-family: oswaldsemibold;
+    padding-bottom: 5px;
+}
+
+.pregunta_titol_error {
+    text-align: left;
+    font-weight: normal;
+    font-size: 16px;
+    color: #f00;
+    font-family: oswaldsemibold;
+    padding-bottom: 5px;
+}
+
+/***********************/
+/***** Button Size *****/
+/***********************/
+
+.button_XS {
+    width:80px;
+    height:45px;
+    padding-top: 12px;
+}
+
+.button_S { /** boto_petit **/
+    width:100px;
+    height:45px;
+    padding-top: 12px;
+}
+
+.button_M { /** boto_mitja **/
+    width:185px;
+    height:45px;
+    padding-top: 12px;
+}
+
+.button_Mw { /** boto_mitja_ample **/
+    width:185px;
+    height:70px;
+    line-height: 20px;
+    padding-top: 12px;
+}
+
+.button_L { /** boto_gran **/
+    width:250px;
+    height:45px;
+    padding-top: 12px;
+    margin-top: 5px;
+}
+
+.button_Lw { /** boto_gran_ample **/
+    width:250px;
+    height:70px;
+    padding-top: 12px;
+    line-height: 16px; /* Lines with smaller font-size */
+
+}
+
+.button_XL {
+    width:310px;
+    height:45px;
+    padding-top: 12px;
+}
+
+.button_XXL { /** boto_llarg **/
+    width:410px;
+    height:45px;
+    padding-top: 12px;
+}
+
+.button_XXXL {
+    width:500px;
+    height:45px;
+    padding-top: 12px;
+}
+
+.button_XXXXL { /** boto_superllarg **/
+    width:830px;
+    height:45px;
+    padding-top: 12px;
+}
+
+/*****************/
+/***** Typos *****/
+/*****************/
+
+.small_typo {
+    font-size: 12px;
+    pointer-events: none;
+    font-family: ralewaymedium;
+}
+
+/********************/
+/***** Survey 1 *****/
+/********************/
+
+.pregunta1 {
+    position:absolute;
+    top:105px;
+    left:110px;
+    width:880px;
+    text-align: left;
+    padding-bottom: 5px;
+}
+
+.pregunta2 {
+    position:absolute;
+    top:185px;
+    left:110px;
+    width:800px;
+    text-align: left;
+}
+
+.pregunta3 {
+    position: absolute;
+    top: 320px;
+    left: 110px;
+    width: 800px;
+    text-align: left;
+}
+
+.pregunta4 {
+    position: absolute;
+    top: 405px;
+    left: 110px;
+    width: 800px;
+    text-align: left;
+}
+
+/********************/
+/***** Survey 2 *****/
+/********************/
+
+.pregunta5 {
+    position:absolute;
+    top:105px;
+    left:110px;
+    width:880px;
+    text-align: left;
+    padding-bottom: 5px;
+}
+
+.pregunta6 {
+    position:absolute;
+    top:220px;
+    left:110px;
+    width:800px;
+    text-align: left;
+}
+
+.pregunta7 {
+    position:absolute;
+    top:420px;
+    left:110px;
+    width:800px;
+    text-align: left;
+}
+
+/**************************/
+/***** Question Frame *****/
+/**************************/
+
+.text_frame_title {
+    position: absolute;
+    top: 120px;
+    left: 100px;
+    width: 790px;
+    font-size: 32px;
+    text-align: left;
+    font-family: oswaldbold;
+}
+
+.text_frame_info {
+    position: absolute;
+    top: 115px;
+    left: 100px;
+    width: 790px;
+    font-size: 20px;
+    text-align: justify;
+    font-family: ralewaymedium;
+}
+
+.text_frame_info_bold {
+    font-size: 20px;
+    font-family: ralewaybold;
+}
+
+.pregunta8 {
+    position:absolute;
+    top:240px;
+    left: 100px;
+    width: 790px;
+    text-align: left;
+}
+
+.pregunta9 {
+    position:absolute;
+    top:360px;
+    left: 100px;
+    width: 790px;
+    text-align: left;
+}
+
+.pregunta10 {
+    position:absolute;
+    top:470px;
+    left: 100px;
+    width: 790px;
+    text-align: left;
+}
+
+.pregunta11 {
+    position:absolute;
+    top:105px;
+    left: 100px;
+    width: 790px;
+    text-align: left;
+}
+
+.pregunta12 {
+    position:absolute;
+    top:265px;
+    left: 100px;
+    width: 790px;
+    text-align: left;
+}
+
+.pregunta13 {
+    position:absolute;
+    top:355px;
+    left: 100px;
+    width: 790px;
+    text-align: left;
+}
+
+/*********************************/
+/*********************************/
+/** Preguntes cuestionari final **/
+/*********************************/
+/*********************************/
+
+
+.preguntafinal1 {
+    position:absolute;
+    top:120px;
+    left: 100px;
+    width: 790px;
+    text-align: left;
+}
+
+.preguntafinal2 {
+    position:absolute;
+    top: 250px;
+    left: 100px;
+    width: 790px;
+    text-align: left;
+}
+
+.preguntafinal3 {
+    position:absolute;
+    top: 410px;
+    left: 100px;
+    width: 790px;
+    text-align: left;
+}
+
+.preguntafinal4 {
+    position:absolute;
+    top: 120px;
+    left: 100px;
+    width: 790px;
+    text-align: left;
+}
+
+.preguntafinal5 {
+    position:absolute;
+    top: 285px;
+    left: 100px;
+    width: 790px;
+    text-align: left;
+}
+
+.preguntafinal6 {
+    position:absolute;
+    top: 385px;
+    left: 100px;
+    width: 790px;
+    text-align: left;
+}
+
+.preguntafinal7 {
+    position:absolute;
+    top: 420px;
+    left: 100px;
+    width: 790px;
+    text-align: left;
+}
+
+.preguntafinal8 {
+    position:absolute;
+    top: 120px;
+    left: 100px;
+    width: 790px;
+    text-align: left;
+}
+
+.preguntafinal9 {
+    position:absolute;
+    top: 340px;
+    left: 100px;
+    width: 790px;
+    text-align: left;
+}
+
+.preguntafinal10 {
+    position:absolute;
+    top: 120px;
+    left: 100px;
+    width: 790px;
+    text-align: left;
+}
+
+.preguntafinal11 {
+    position:absolute;
+    top: 200px;
+    left: 100px;
+    width: 790px;
+    text-align: left;
+}
+
+
+/**********************************/
+/***** Questions verification *****/
+/**********************************/
+
+.verification_question_1 {
+    position:absolute;
+    top:120px;
+    left: 100px;
+    width: 790px;
+    text-align: left;
+}
+
+.verification_question_2 {
+    position:absolute;
+    top:210px;
+    left: 100px;
+    width: 790px;
+    text-align: left;
+}
+
+.verification_question_3 {
+    position: absolute;
+    top: 330px;
+    left: 100px;
+    width: 790px;
+    text-align: left;
+}
+
+.verification_question_4 {
+    position: absolute;
+    top: 450px;
+    left: 100px;
+    width: 790px;
+    text-align: left;
+}
+
+.error_verification {
+    position: absolute;
+    top: 560px;
+    left: 100px;
+    width: 790px;
+    text-align: center;
+    color: #f00;
+    font-size: 18px;
+    font-family: oswaldbold;
+}
+
+.error {
+    color:#f00;
+    font-size: 16px;
+    font-family: oswaldbold;
+}
+
+.error_space {
+    height:30px;
+}
+
+.bold_underline {
+    font-size: 18px;
+    font-family: oswaldsemibold;
+    text-decoration: underline;
+}
+
+
+
+
+
+
+

@@ -1,0 +1,196 @@
+::selection { background: transparent; }
+::-moz-selection { background: transparent; }
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #eee;
+  height: 100%;
+}
+
+/* The next rule avoid body-scrolling bug */
+.modal-open, .modal-open .navbar-fixed-top {
+  margin-right: 0 !important;
+}
+/* end of body-scroolling bug */
+
+
+.wrapper-ipad {
+  width:1024px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color:#fff;
+  min-height: 100%;
+}
+
+
+
+/*aixo nomes per ordinador, no ipad */
+.wrapper-pc{
+    height: 675px;  /*#670px;*/
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    border: 1px solid #dddddd;
+    -webkit-box-shadow: 0 0 5px 1px rgba(0,0,0,0.2);
+    box-shadow: 0 0 5px 1px rgba(0,0,0,0.2);
+    background-color: white;
+    overflow:hidden;
+}
+
+*{
+	font-family: 'Roboto', sans-serif;
+	font-weight:300;
+	font-size:14pt;
+	color:#333;
+}
+
+
+.container {
+	width: 1024px !important;
+	max-width: 1024px !important;
+
+}
+
+
+.topdiv {
+    position:relative;
+}
+
+.topdiv-centered{
+    position:relative;
+    text-align:center;
+}
+
+.separador {
+    position:absolute;
+    left:-15px;
+    top:570px;
+    width:1024px;
+}
+
+hr {
+    border-top: 1px solid #ddd;
+    top: 120px;
+}
+
+.separador-top {
+    position:absolute;
+    left:-15px;
+    top:80px;
+    width:1024px;
+    height: 0;
+    background-color: #dddddd;
+}
+
+
+.separador-bottom {
+    position:absolute;
+    left:-15px;
+    top:575px;
+    width:1024px;
+    height: 0;
+    background-color: #dddddd;
+}
+
+.page_header_left {
+    position: absolute;
+    top: 35px;
+    left: 100px;
+    width: 824px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 26px;
+    color: #FFFFFF;
+    z-index: 2;
+}
+
+
+.page_title {
+    position: absolute;
+    top: 35px;
+    left: 100px;
+    width: 790px;
+    text-align: center;
+    text-transform: initial;
+    font-size: 26px;
+    color: #FFFFFF;
+    z-index: 2;
+    font-family: oswaldbold;
+}
+
+.page_title_2 {
+    position: absolute;
+    top: 35px;
+    left: 67px;
+    width: 824px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+    color: #FFFFFF;
+    z-index: 2;
+}
+
+
+.header_logo {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    width: 80px;
+    text-align: left;
+    z-index: 2;
+}
+
+.page_button_left {
+    position:absolute;
+    top:605px;
+    left:16px;
+    width:400px;
+    text-align: left;
+}
+
+.page_button_right {
+    position:absolute;
+    top:605px;
+    right:16px;
+    width:400px;
+    text-align: right;
+}
+
+
+#boto_sortir {
+    width: 300px;
+    height:60px;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #aaaaaa;
+    background-color: white;
+    border: 1px solid #aaaaaa;
+
+}
+
+
+.header_background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:1024px;
+    height: 100px;
+    margin-left: -15px;
+    z-index:0;
+    background: #000; /* Old browsers */
+    background: #197F03;
+}
+
+.header_background_red {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:1024px;
+    height: 100px;
+    margin-left: -15px;
+    z-index:0;
+    background: #f53410; /* Old browsers */
+}

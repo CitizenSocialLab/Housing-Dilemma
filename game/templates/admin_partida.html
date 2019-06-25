@@ -1,0 +1,122 @@
+{% extends "admin.html" %}
+
+
+{% block stylesheet %}
+    <link href="/static/css/admin.css" rel="stylesheet" media="screen">
+    <link href="/static/css/admin_partida.css" rel="stylesheet" media="screen">
+{% endblock %}
+
+
+{% block content_admin %}
+
+    <div id="usuaris_titol" hidden>No hay ninguna partida jugandose...</div>
+
+    <div id="table_partida"></div>
+
+{% endblock %}
+
+{% block javascript %}
+
+        <script>
+            function tancarPartida(num_partida) {
+                //console.log("Tancant partida " + num_partida);
+                $.ajax({
+                    url: '/es/ws/tancar_partida/'+num_partida+'/'
+                });
+            }
+
+            function tancarRonda(num_partida) {
+                //console.log("Tancant ronda " + num_partida);
+                $.ajax({
+                    url: '/es/ws/tancar_ronda/'+num_partida+'/'
+                });
+            }
+
+            function detailPartida(num_partida) {
+                window.location.href = '/es/admin/partida_detail/'+num_partida+'/'
+            }
+
+            function update_status() {
+                $.ajax({
+                    url: '/es/ws/status_partida/',
+                    success: function(data) {
+
+                        $("#table_partida").empty();
+
+                        if(data.partides.length>0) {
+                            console.log(data)
+                            $('#usuaris_titol').hide();
+
+                            // Aqui en teoria tenim un array de partides
+                            for (var i = 0; i < data.partides.length; i++) {
+                                this.treatment =  data.partides[i].treatment;
+
+                                var table = '<table style="width=90%;">';
+
+                                table+="<tr>";
+                                table+="<td colspan=1 style=font-size:22px;font-family:oswaldbold; width=400px;cell>Partida #"+data.partides[i].num_partida+"</td>";
+                                table+="</tr>";
+
+                                table+="<tr>";
+                                table+='<td></td>';
+                                table+="</tr>";
+
+                                table+="<tr>";
+                                table+='<td style="font-size:16px; font-family: ralewaymedium"> Answers '+data.partides[i].ronda_data[data.partides[i].ronda_data.length-1].num_respostes+'/6</td>';
+                                table+="</tr>";
+
+                                table+="<tr>";
+                                table+='<td style="font-size:16px; font-family: ralewaymedium"> Treatment '+ this.treatment +' </td>';
+                                table+="</tr>";
+
+                                table+="<tr>";
+                                table+='<td style="font-size:16px; text-align: center; font-family: ralewaymedium"> Created: ' + data.partides[i].date_creation + '</td>';
+                                table+="</tr>";
+
+                                table+="<tr>";
+                                table+='<td style="font-size:16px; text-align: center; font-family: ralewaymedium"> Started: '+ data.partides[i].data_inici + '</td>';
+                                table+="</tr>";
+
+                                table+="<tr>";
+                                table+='<td style="font-size:18px; font-family: ralewaybold">'+data.partides[i].status+'</td>';
+                                table+="</tr>";
+
+                                table+="<tr>";
+                                table+='<td></td>';
+                                table+="</tr>";
+
+                                table+="<tr>";
+                                table+='<td><button onclick="tancarPartida('+data.partides[i].num_partida+')" class="bx-push bx bx-admin-small" style="width:150px;height:40px;background-color:#ff0000;border-color:#ff0000;">' + "Cerrar partida" + '</button> <button onclick="tancarRonda('+data.partides[i].num_partida+')" class="bx-push bx bx-admin-small" style="width:150px;height:40px;background-color:#ff0000;border-color:#ff0000;">' + "Cerrar ronda" + '</button> <button onclick="detailPartida('+data.partides[i].num_partida+')" class="bx-push bx bx-admin-small" style="width:150px;height:40px;">' + "Detalles" + '</button></td>'
+                                table+="</tr>";
+
+
+                                table+="</tr>";
+
+                                table+="<tr>";
+
+                                table+="</tr>";
+
+                                table+="</table> <br />";
+
+                                $("#table_partida").append(table );
+                            }
+                        }
+                        else
+                        {
+                            $('#usuaris_titol').show();
+                        }
+
+                        setTimeout(function(){update_status()}, 500);
+                    },
+                    error: function(data) {
+                        setTimeout(function(){update_status()}, 500);
+                    }
+                });
+            }
+
+            $(document).ready(function() {
+                update_status();
+            });
+        </script>
+
+{% endblock %}

@@ -83,8 +83,8 @@ __Step 4: MySQL actions (Tab 2)__
 Directory: `cd /.../Housing-Dilemma/`   
 Database: `mysql -u user_db -p (pass_db)`
 
-Drop database (if name\_db exits): `drop database name\_db;` 
-Create database: `create database name\_db;`  
+Drop database (if name\_db exits): `drop database name_db;` 
+Create database: `create database name_db;`  
 Exit: `exit;`
 
 Modificate fields of database: `python manage.py makemigrations`  

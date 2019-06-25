@@ -51,9 +51,9 @@ __MongoDB__
 ```mongod --dbpath /.../Housing-Dilemma/ddbb```
 
 __Load text__   
-File with text and translations:  `/.../Housing-Dilemma/game/i18n/translations.xlsx`  
+File with text and translations:  `/.../Housing-Dilemma/game/i18n/translations_code.xlsx`  
    
-```python excel_to_mongodb.py```
+```python excel_to_mongodb.py code```
 
 __Run Server__  
 ```python manage.py runserver localhost:port```
@@ -92,7 +92,6 @@ Refresh database:
 `python manage.py migrate` 
 
 __Step 5: Load texts (Tab 2)__
-Load text from file translations_*code*.xls
 Load translations: `python excel_to_mongodb.py code`
 
 __Step 6: Run Server (Tab 3)__  

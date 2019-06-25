@@ -6,7 +6,9 @@ Experiment designed and implemented to be performed in the framework of BiblioLa
 
 This participatory experiment presents a very common dilemma that studies how we behave in front of a situation of rent a house. The participants (6) have to rent a house in a period of 12 months, they have to decide whether the market price is acceptable or not. Their decisions affect the market and, therefore, to the other participants. This experiment tests different treatments with or without public intervention, with varied endowments and/or initial market prices. 
 
-Note: This experiment is performed in groups of 6 participants. 
+Note: This experiment is performed in groups of 6 participants.
+
+![](https://github.com/CitizenSocialLab/Housing-Dilemma/blob/master/media/screenshots/ca/JocHabitatge_01.png)
 
 ## Data ##
 **Not available**  
@@ -22,6 +24,7 @@ Steps are necessary to get *Housing Dilemma* install, up and running in the loca
 __Experimental Variables__
 Modify the file `vars.py` with the experimental settings:
 
+* `INCREMENT = 5` (increment or decrement of price in each month)
 * `MUNICIPI = 'Barcelona'` (municipality, experimental public space)
 * `HOUSING_PRICE = 1000` (rental price per month in the municipality)
 * `ENDOWMENTS_EQUAL = [2000, 2000, 2000, 2000, 2000, 2000]` (equal endowments for the six partcipants)
@@ -88,8 +91,9 @@ Modificate fields of database: `python manage.py makemigrations`
 Refresh database:
 `python manage.py migrate` 
 
-__Step 5: Load texts (Tab 2)__    
-Load translations: `python excel_to_mongodb.py`
+__Step 5: Load texts (Tab 2)__
+Load text from file translations_*code*.xls
+Load translations: `python excel_to_mongodb.py code`
 
 __Step 6: Run Server (Tab 3)__  
 Directory: `cd /.../Housing-Dilemma/ `   

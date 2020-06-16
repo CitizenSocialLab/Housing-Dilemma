@@ -109,7 +109,7 @@ Version 1.0
 
 ## License ##
 
-CitizenSocialLab (c) by Julian Vicens
+CitizenSocialLab | Housing Dilemma (c) by Julian Vicens
 
 CitizenSocialLab is licensed under a [GNU Affero General Public License](https://www.gnu.org/licenses/agpl-3.0.txt)
 

@@ -108,12 +108,12 @@ Control and Administration:
 Version 1.0
 
 ## License ##
-CitizenSocialLab | Housing Dilemma (c) by Julian Vicens
 
-CitizenSocialLab | Housing Dilemma is licensed under a
-Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+CitizenSocialLab (c) by Julian Vicens
 
-You should have received a copy of the license along with this work. If not, see [CC BY-NC-SA license](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+CitizenSocialLab is licensed under a [GNU Affero General Public License](https://www.gnu.org/licenses/agpl-3.0.txt)
+
+All the contents of Housing Dilemma repository are under the license [CC BY-NC-SA license](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ## Contributors ##
 
